@@ -14,3 +14,44 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+.footer_container{
+  max-width: 1170px;
+
+
+}
+.footer_container ul{  
+  list-style: none;  
+  padding-left: 0; 
+
+}
+.footer_container ul li a, .footer_container a{
+  text-decoration: none;
+  color: rgb(14, 147, 229);
+}
+
+.hr_footer{
+  height: 1.5px;
+  width: 100%;
+  background-color: rgb(10, 149, 61);
+
+}
+.footer_app img{
+  width: 100%;
+}
+
+.fb_logo{
+  color: rgb(66, 66, 180);
+  font-weight: 500;
+}
+.fb_logo svg{
+  font-size: 28px;
+}
+.copyright{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px 0;
+}
+

@@ -1,0 +1,38 @@
+.main_container{
+max-width: 1000px;
+   margin: 0 auto;
+   padding: 0 15px;
+
+}
+.category{
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 50px;
+   padding: 15px;
+}
+.category a{
+  text-decoration: none;
+  color: unset;
+}
+.category a:hover{
+color: unset;
+}
+.category_item{
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+}
+.category_item svg{
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+}
+.category_quantity{
+    color: gray;
+}
+
+
+@media (max-width: 768px) {
+    .category{
+        grid-template-columns: repeat(2, 1fr);  
+     }
+}

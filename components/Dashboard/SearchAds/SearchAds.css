@@ -1,0 +1,12 @@
+.search_ads{
+    background-color: black;
+    padding: 30px;
+}
+.search_ads_field{
+    max-width: 600px;
+    margin: 0 auto;
+}
+.display_search{
+    max-width: 600px;
+    margin: 0 auto;
+}

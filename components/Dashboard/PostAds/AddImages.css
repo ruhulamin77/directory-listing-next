@@ -1,0 +1,24 @@
+/* .img-minus-icon {
+  position: absolute;
+  top: -31px;
+  right: -100px;
+  padding: 0px 7px;
+  background-color: aqua;
+}
+.icon-parent {
+  width: 100px;
+  height: 80px;
+} */
+
+.img-remove-icon {
+  top:10px;
+  right:0;
+}
+.img-remove-icon svg{
+  color: red;
+  font-size: 20px;
+
+}
+.img-remove-icon svg:hover{
+  cursor: pointer;
+}
