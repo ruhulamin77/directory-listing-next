@@ -10,39 +10,39 @@ import {
 
 export default function FooterDemo() {
   return (
-    <footer className="bg-white border border-t">
+    <footer className="bg-light">
       {/* <!-- START THE SOCIAL MEDIA CONTENT  --> */}
-      <div className="footer-sm bg-danger">
+      <div className="footer-sm bg-white border border-y">
         <div className="container mx-auto">
-          <div className="row py-4 text-center text-white">
+          <div className="row py-4 text-center">
             <div className="col-lg-5 col-md-6 mb-4 mb-md-0">
               connect with us on social media
             </div>
-            <div className="col-lg-7 col-md-6 d-flex gap-2 justify-content-center">
+            <div className="col-lg-7 col-md-6 d-flex gap-3 justify-content-center">
               {[
                 {
-                  icon: <FaFacebookF />,
+                  icon: <FaFacebookF className='fs-4' />,
                   url: '#',
                   name: 'Facebook',
                 },
                 {
-                  icon: <FaGithub />,
+                  icon: <FaGithub className='fs-4' />,
                   url: '#',
                   name: 'Github',
                 },
                 {
-                  icon: <FaInstagram />,
+                  icon: <FaInstagram className='fs-4' />,
                   url: '#',
                   name: 'Instagram',
                 },
                 {
-                  icon: <FaLinkedin />,
+                  icon: <FaLinkedin className='fs-4' />,
                   url: '#',
                   name: 'Linkedin',
                 },
               ].map((item) => (
                 <Link href={item.url} key={item.name}>
-                  <a className="text-white">{item.icon}</a>
+                  <a className="text-danger">{item.icon}</a>
                 </Link>
               ))}
             </div>
@@ -56,7 +56,7 @@ export default function FooterDemo() {
           <div className="col-12 col-sm-6 col-lg-6 mx-auto">
             <h5 className="text-capitalize fw-bold">Softfy</h5>
             <hr
-              className="bg-white d-inline-block mb-4"
+              className="bg-danger d-inline-block my-3"
               style={{ width: '60px', height: '2px' }}
             />
             <p className="lh-lg">
@@ -68,7 +68,7 @@ export default function FooterDemo() {
           <div className="col-12 col-sm-6 col-lg-2 mb-4 mx-auto">
             <h5 className="text-capitalize fw-bold">Products</h5>
             <hr
-              className="bg-white d-inline-block mb-4"
+              className="bg-danger d-inline-block my-3"
               style={{ width: '60px', height: '2px' }}
             />
             <ul className="list-inline campany-list">
@@ -89,7 +89,7 @@ export default function FooterDemo() {
           <div className="col-12 col-sm-6 col-lg-2 mb-4 mx-auto">
             <h5 className="text-capitalize fw-bold">useful links</h5>
             <hr
-              className="bg-white d-inline-block mb-4"
+              className="bg-danger d-inline-block my-3"
               style={{ width: '60px', height: '2px' }}
             />
             <ul className="list-inline campany-list">
@@ -110,7 +110,7 @@ export default function FooterDemo() {
           <div className="col-12 col-sm-6 col-lg-2 mb-4 mx-auto">
             <h5 className="text-capitalize fw-bold">contact</h5>
             <hr
-              className="bg-white d-inline-block mb-4"
+              className="bg-danger d-inline-block my-3"
               style={{ width: '60px', height: '2px' }}
             />
             <ul className="list-inline campany-list">
@@ -132,7 +132,7 @@ export default function FooterDemo() {
       </div>
 
       {/* <!-- START THE COPYRIGHT INFO  --> */}
-      <div className="bg-danger pt-5 pb-5">
+      <div className="bg-danger pt-3 pb-3">
         <div className="container">
           <div className="row text-center text-white">
             <div className="col-12">
