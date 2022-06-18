@@ -17,8 +17,8 @@ const Layout = ({ children, title = 'Directory Listing' }) => {
       </Head>
       <Header />
       {children}
-      <Footer />
-      {/* <FooterDemo /> */}
+      {/* <Footer /> */}
+      <FooterDemo />
     </div>
   );
 };
