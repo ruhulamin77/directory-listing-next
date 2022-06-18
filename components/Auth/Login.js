@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { toast } from 'react-toastify';
 import { loginUser } from '../../store/actions/userActions';
-import Header from '../Layout/Header';
 import Link from 'next/link';
 
 const Login = () => {

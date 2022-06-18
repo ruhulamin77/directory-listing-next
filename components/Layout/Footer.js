@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 // import playStore from "../../images/google-play.png";
@@ -20,12 +21,15 @@ const Footer = () => {
               </Row>
               <h6 className="mt-4">Connect with</h6>
               <div className="fb_logo">
-                <AiFillFacebook /> Like us on facebook
+                <AiFillFacebook />{' '}
+                <Link href="http://www.facebook.com" target="_blank">
+                  <a>Like us on facebook</a>
+                </Link>
               </div>
               <h6 className="mt-3">Other countries</h6>
-              <div>
-                <a href="www">Sri Lanka</a>
-              </div>
+              <Link href="www">
+                <a>Sri Lanka</a>
+              </Link>
             </Col>
 
             <Col xs={12} sm={12} md={8} lg={8} className="footer_right">
