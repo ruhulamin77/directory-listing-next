@@ -1,11 +1,15 @@
 import Head from 'next/head';
 import Footer from './Footer';
+import FooterDemo from './FooterDemo';
 
 import Header from './Header';
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children, title = 'Directory Listing' }) => {
   return (
-    <div>
+    <div
+      className="d-flex flex-column justify-content-between"
+      style={{ minHeight: '100vh' }}
+    >
       <Head>
         <title>Softfy | {title}</title>
         <meta charSet="utf-8" />
@@ -14,6 +18,7 @@ const Layout = ({ children, title }) => {
       <Header />
       {children}
       <Footer />
+      {/* <FooterDemo /> */}
     </div>
   );
 };

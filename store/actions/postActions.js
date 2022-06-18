@@ -24,7 +24,7 @@ import {
 // Get all posts
 export const getAllPosts = () => async (dispatch) => {
   dispatch({ type: ALL_POSTS_REQUEST });
-  let url = `/api/posts`;
+  let url = `http://localhost:5000/api/posts`;
   try {
     const { data } = await axios.get(url);
     dispatch({ type: ALL_POSTS_SUCCESS, payload: data });
@@ -44,11 +44,30 @@ export const createPost = (post) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post('/api/posts', post, config);
+    const { data } = await axios.post(
+      'http://localhost:5000/api/posts',
+      post,
+      config
+    );
     dispatch({ type: NEW_POST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
       type: NEW_POST_FAIL,
+      payload: error.error || error.message,
+    });
+  }
+};
+
+// Get post details
+export const getPostDetails = (id) => async (dispatch) => {
+  dispatch({ type: POST_DETAILS_REQUEST });
+
+  try {
+    const { data } = await axios.get(`http://localhost:5000/api/posts/${id}`);
+    dispatch({ type: POST_DETAILS_SUCCESS, payload: data.post });
+  } catch (error) {
+    dispatch({
+      type: POST_DETAILS_FAIL,
       payload: error.error || error.message,
     });
   }

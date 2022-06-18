@@ -13,7 +13,7 @@ import ProfileOffcanvas from './ProfileOffcanvas';
 
 const Header = () => {
   return (
-    <header className="sticky-top">
+    <header>
       <ProfileOffcanvas />
       <MenuOffcanvas />
       {/* <!-- top--contact navbar --> */}
@@ -46,12 +46,11 @@ const Header = () => {
         <div className="container">
           <div className="navbar-nav d-flex flex-row align-items-center gap-4 w-100">
             {/* <!-- nav logo --> */}
-            <a
-              className="navbar-brand fs-3 fw-bolder me-0 text-dark d-none d-md-block"
-              href="index.html"
-            >
-              Softfy
-            </a>
+            <Link href="/">
+              <a className="navbar-brand fs-3 fw-bolder me-0 text-dark d-none d-md-block">
+                Softfy
+              </a>
+            </Link>
             {/* <!-- hamburger menu --> */}
             <a
               href="#menu-sidebar"
@@ -272,22 +271,22 @@ const Header = () => {
               </ul>
             </li>
             <li>
-              <a href="#shops" className="text-white nav-link">
-                All Shops
-              </a>
+              <Link href="/all-ads">
+                <a className="text-white nav-link">All Ads</a>
+              </Link>
             </li>
             <li>
-              <a href="#campaigns" className="text-white nav-link">
+              <a href="/campaigns" className="text-white nav-link">
                 Campaigns
               </a>
             </li>
             <li>
-              <a href="#" className="text-white nav-link">
+              <a href="/help" className="text-white nav-link">
                 Help
               </a>
             </li>
           </ul>
-          <Link href="/create-ad">
+          <Link href="/post-ad">
             <a className="btn btn-warning shadow-none nav-link rounded-0 text-white px-3 px-xl-5">
               Post Your Ad
             </a>
