@@ -1,5 +1,5 @@
 import React from 'react';
-import './Location.css';
+// import './Location.css';
 
 const Location = () => {
   return (

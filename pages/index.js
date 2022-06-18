@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../components';
+import { Category, Layout, Location } from '../components';
 import { getAllCategories } from '../store/actions/categoryActions';
 import { wrapper } from '../store/store';
 import { useSelector } from 'react-redux';
@@ -7,8 +7,9 @@ import { useSelector } from 'react-redux';
 const HomePage = () => {
   const { categories } = useSelector((state) => state.categories);
   return (
-    <Layout>
-      <h3>{categories.map((category) => category.name)}</h3>
+    <Layout title="Home">
+      <Location />
+      <Category />
     </Layout>
   );
 };

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Container } from 'react-bootstrap';
 import { AiFillCar } from 'react-icons/ai';
 import { FaDog, FaGraduationCap, FaIndustry } from 'react-icons/fa';
@@ -16,8 +17,8 @@ import {
   MdOutlineChair,
   MdWork,
 } from 'react-icons/md';
-import { Link } from 'react-router-dom';
-import './Category.css';
+// import { Link } from 'react-router-dom';
+// import './Category.css';
 
 const Category = () => {
   return (
@@ -27,82 +28,102 @@ const Category = () => {
           <h5>Browse items by category</h5>
           <div className="category mb-5" md={2} lg={4}>
             <Link href="" className="category_item">
-              <div className="category_icon">
-                <GoDeviceMobile />
-              </div>
-              <div className="category_title">
-                <div className="category_name">Mobiles</div>
-                <div className="category_quantity">
-                  122 <span>ads</span>
+              <a>
+                <div className="category_icon">
+                  <GoDeviceMobile />
                 </div>
-              </div>
+                <div className="category_title">
+                  <div className="category_name">Mobiles</div>
+                  <div className="category_quantity">
+                    122 <span>ads</span>
+                  </div>
+                </div>
+              </a>
             </Link>
             <Link href="" className="category_item">
-              <a><div className="category_icon">
-                <MdMonitor />
-              </div>
-              <div className="category_title">
-                <div className="category_name">Electronics</div>
-                <div className="category_quantity">
-                  122 <span>ads</span>
+              <a>
+                <div className="category_icon">
+                  <MdMonitor />
                 </div>
-              </div></a>
+                <div className="category_title">
+                  <div className="category_name">Electronics</div>
+                  <div className="category_quantity">
+                    122 <span>ads</span>
+                  </div>
+                </div>
+              </a>
             </Link>
             <Link href="" className="category_item">
-             <a> <div className="category_icon">
-                <MdOutlineChair />
-              </div>
-              <div className="category_title">
-                <div className="category_name">Home & Living</div>
-                <div className="category_quantity">
-                  122 <span>ads</span>
+              <a>
+                {' '}
+                <div className="category_icon">
+                  <MdOutlineChair />
                 </div>
-              </div></a>
+                <div className="category_title">
+                  <div className="category_name">Home & Living</div>
+                  <div className="category_quantity">
+                    122 <span>ads</span>
+                  </div>
+                </div>
+              </a>
             </Link>
             <Link href="" className="category_item">
-             <a> <div className="category_icon">
-                <AiFillCar />
-              </div>
-              <div className="category_title">
-                <div className="category_name">Vehicles</div>
-                <div className="category_quantity">
-                  122 <span>ads</span>
+              <a>
+                {' '}
+                <div className="category_icon">
+                  <AiFillCar />
                 </div>
-              </div></a>
+                <div className="category_title">
+                  <div className="category_name">Vehicles</div>
+                  <div className="category_quantity">
+                    122 <span>ads</span>
+                  </div>
+                </div>
+              </a>
             </Link>
             <Link href="" className="category_item">
-              <a><div className="category_icon">
-                <FaDog />
-              </div>
-              <div className="category_title">
-                <div className="category_name"> Pets & Animals</div>
-                <div className="category_quantity">
-                  122 <span>ads</span>
+              <a>
+                <div className="category_icon">
+                  <FaDog />
                 </div>
-              </div></a>
+                <div className="category_title">
+                  <div className="category_name"> Pets & Animals</div>
+                  <div className="category_quantity">
+                    122 <span>ads</span>
+                  </div>
+                </div>
+              </a>
             </Link>
             <Link href="" className="category_item">
-             <a> <div className="category_icon">
-                <IoHome />
-              </div>
-              <div className="category_title">
-                <div className="category_name"> Property</div>
-                <div className="category_quantity">
-                  122 <span>ads</span>
+              <a>
+                {' '}
+                <div className="category_icon">
+                  <IoHome />
                 </div>
-              </div></a>
+                <div className="category_title">
+                  <div className="category_name"> Property</div>
+                  <div className="category_quantity">
+                    122 <span>ads</span>
+                  </div>
+                </div>
+              </a>
             </Link>
 
             <Link href="" className="category_item">
-              <div className="category_icon">
-                <GiTShirt />
-              </div>
-              <div className="category_title">
-                <div className="category_name"> Men's Fashion & Grooming</div>
-                <div className="category_quantity">
-                  122 <span>ads</span>
+              <a>
+                <div className="category_icon">
+                  <GiTShirt />
                 </div>
-              </div>
+                <div className="category_title">
+                  <div className="category_name">
+                    {' '}
+                    Men&apos;s Fashion & Grooming
+                  </div>
+                  <div className="category_quantity">
+                    122 <span>ads</span>
+                  </div>
+                </div>
+              </a>
             </Link>
 
             {/* <Link href="" className="category_item">

@@ -20,7 +20,7 @@ import {
 export const getLocations = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_LOCATIONS_REQUEST });
-    const { data } = await axios.get('/api/location');
+    const { data } = await axios.get('http://localhost:5000/api/location');
     dispatch({ type: ALL_LOCATIONS_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({ type: ALL_LOCATIONS_FAIL, payload: error.message });
@@ -31,7 +31,10 @@ export const getLocations = () => async (dispatch) => {
 export const createNewLocation = (location) => async (dispatch) => {
   try {
     dispatch({ type: NEW_LOCATION_REQUEST });
-    const { data } = await axios.post('/api/location', location);
+    const { data } = await axios.post(
+      'http://localhost:5000/api/location',
+      location
+    );
     dispatch({ type: NEW_LOCATION_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: NEW_LOCATION_FAIL, payload: error.message });
@@ -42,7 +45,10 @@ export const createNewLocation = (location) => async (dispatch) => {
 export const updateLocationData = (id, locationData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_LOCATION_REQUEST });
-    const { data } = await axios.put(`/api/location/${id}`, locationData);
+    const { data } = await axios.put(
+      `http://localhost:5000/api/location/${id}`,
+      locationData
+    );
     dispatch({ type: UPDATE_LOCATION_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: UPDATE_LOCATION_FAIL, payload: error.message });
@@ -53,7 +59,7 @@ export const updateLocationData = (id, locationData) => async (dispatch) => {
 export const deleteLocation = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_LOCATION_REQUEST });
-    await axios.delete(`/api/location/${id}`);
+    await axios.delete(`http://localhost:5000/api/location/${id}`);
     dispatch({ type: DELETE_LOCATION_SUCCESS });
   } catch (error) {
     dispatch({ type: DELETE_LOCATION_FAIL, payload: error.message });

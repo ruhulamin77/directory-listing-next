@@ -3,7 +3,7 @@ import { Layout, Register } from '../../components';
 
 export default function RegisterPage() {
   return (
-    <Layout>
+    <Layout title="Register">
       <Register />
     </Layout>
   );

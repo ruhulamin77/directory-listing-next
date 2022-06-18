@@ -16,8 +16,8 @@ const Footer = () => {
             <Col xs={12} sm={6} md={3} lg={3} className="footer_left me-5 mb-3">
               <h6>Download our app</h6>
               <Row xs={2} sm={2} md={2} lg={2} className="footer_app">
-                <a href=""> {/* <img src={playStore} alt="play store" /> */}</a>
-                <a href="">{/* <img src={appStore} alt="app store" /> */}</a>
+                <a href="#"> {/* <img src={playStore} alt="play store" /> */}</a>
+                <a href="#">{/* <img src={appStore} alt="app store" /> */}</a>
               </Row>
               <h6 className="mt-4">Connect with</h6>
               <div className="fb_logo">
@@ -27,7 +27,7 @@ const Footer = () => {
                 </Link>
               </div>
               <h6 className="mt-3">Other countries</h6>
-              <Link href="www">
+              <Link href="/">
                 <a>Sri Lanka</a>
               </Link>
             </Col>
@@ -38,22 +38,22 @@ const Footer = () => {
                   <h6>More from Bikroy</h6>
                   <ul>
                     <li>
-                      <a href="">Sell Fast</a>
+                      <a href="#">Sell Fast</a>
                     </li>
                     <li>
-                      <a href="">Doorstep Delivery</a>
+                      <a href="#">Doorstep Delivery</a>
                     </li>
                     <li>
-                      <a href="">Membership</a>
+                      <a href="#">Membership</a>
                     </li>
                     <li>
-                      <a href="">Banner Ads</a>
+                      <a href="#">Banner Ads</a>
                     </li>
                     <li>
-                      <a href="">Ads Promotions</a>
+                      <a href="#">Ads Promotions</a>
                     </li>
                     <li>
-                      <a href="">Staffing Solutions</a>
+                      <a href="#">Staffing Solutions</a>
                     </li>
                   </ul>
                 </Col>
@@ -61,13 +61,13 @@ const Footer = () => {
                   <h6>Help & Support</h6>
                   <ul>
                     <li>
-                      <a href="">FAQ</a>
+                      <a href="#">FAQ</a>
                     </li>
                     <li>
-                      <a href="">Stay safe</a>
+                      <a href="#">Stay safe</a>
                     </li>
                     <li>
-                      <a href="">Contact Us</a>
+                      <a href="#">Contact Us</a>
                     </li>
                   </ul>
                 </Col>
@@ -75,16 +75,16 @@ const Footer = () => {
                   <h6>Follow Bikroy</h6>
                   <ul>
                     <li>
-                      <a href="">Blog</a>
+                      <a href="#">Blog</a>
                     </li>
                     <li>
-                      <a href="">Facebook</a>
+                      <a href="#">Facebook</a>
                     </li>
                     <li>
-                      <a href="">Twitter</a>
+                      <a href="#">Twitter</a>
                     </li>
                     <li>
-                      <a href="">Youtube</a>
+                      <a href="#">Youtube</a>
                     </li>
                   </ul>
                 </Col>
@@ -92,19 +92,19 @@ const Footer = () => {
                   <h6>About Bikroy</h6>
                   <ul>
                     <li>
-                      <a href="">About Us</a>
+                      <a href="#">About Us</a>
                     </li>
                     <li>
-                      <a href="">Careers</a>
+                      <a href="#">Careers</a>
                     </li>
                     <li>
-                      <a href="">Terms and Conditions</a>
+                      <a href="#">Terms and Conditions</a>
                     </li>
                     <li>
-                      <a href="">Privacy policy</a>
+                      <a href="#">Privacy policy</a>
                     </li>
                     <li>
-                      <a href="">Sitemap</a>
+                      <a href="#">Sitemap</a>
                     </li>
                   </ul>
                 </Col>
