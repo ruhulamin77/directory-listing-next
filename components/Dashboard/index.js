@@ -1,15 +1,18 @@
+import Head from "next/head";
 import React, { useEffect } from "react";
-import DashboardNav from "./DashboardNav";
 
 import Sidebar from "./Sidebar/Sidebar";
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = ({ title = "Dashboard", children }) => {
   useEffect(() => {
     document.title = "Dashboard";
   }, []);
 
   return (
     <>
+      <Head>
+        <title>Softfy | {title}</title>
+      </Head>
       <div style={{ overflow: "hidden" }} className="d-flex ">
         <Sidebar />
 

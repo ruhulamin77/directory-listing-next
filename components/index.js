@@ -15,3 +15,6 @@ export { default as ProfileSetting } from "./Profile/ProfileSetting";
 export { default as DashboardLayout } from "./Dashboard";
 export { default as DashboardNav } from "./Dashboard/DashboardNav";
 export { default as DashboardHome } from "./Dashboard/DashboardHome";
+export { default as Headers } from "./Dashboard/Headers";
+export { default as SearchAds } from "./Dashboard/SearchAds";
+export { default as Profile } from "./Dashboard/Profile";

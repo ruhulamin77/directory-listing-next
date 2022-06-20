@@ -6,7 +6,7 @@ import { Dropdown, DropdownButton } from "react-bootstrap";
 const DashboardNav = ({ title }) => {
   return (
     <div
-      className="bg-dark w-100 text-white py-1 px-2 d-flex h-25 justify-content-between"
+      className="bg-dark w-100 text-white py-1 px-2 d-flex  justify-content-between"
       style={{
         // background: "#1d1d1d",
         position: "sticky",
