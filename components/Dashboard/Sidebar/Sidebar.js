@@ -23,8 +23,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { GoLocation } from "react-icons/go";
 import { MdSettings } from "react-icons/md";
-import { Link } from "react-router-dom";
+
 import { GrPlan } from "react-icons/gr";
+import Link from "next/link";
 // const element = <FontAwesomeIcon icon={faCoffee} />;
 
 const Sidebar = () => {
@@ -51,90 +52,124 @@ const Sidebar = () => {
                 title="Dashboard"
                 icon={<FontAwesomeIcon icon={faChartLine} />}
               >
-                <Link to="/dashboard/home"> Dashboard</Link>
+                <Link href="/dashboard/home">
+                  <a>Dashboard</a>
+                </Link>
               </MenuItem>
 
               <MenuItem icon={<FontAwesomeIcon icon={faHeader} />}>
-                <Link to="/dashboard/headers">Headers</Link>
-              </MenuItem>
-
-              <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
-                <Link to="/dashboard/new-post-ads">Post Ads</Link>
-              </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faSearch} />}>
-                <Link to="/dashboard/search-ads"> Search Ads</Link>
-              </MenuItem>
-              <MenuItem icon={<CgProfile />}>
-                <Link to="/dashboard/profile"> Profile</Link>
-              </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faUsers} />}>
-                <Link to="/dashboard/users"> Users</Link>
-              </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faPager} />}>
-                <Link to="/dashboard/pages">
-                  <SubMenu title=" Pages">
-                    <MenuItem>
-                      <Link to="/dashboard/addNewPage">Add New Page </Link>
-                    </MenuItem>
-                  </SubMenu>
+                <Link href="/dashboard/headers">
+                  <a>Headers</a>
                 </Link>
               </MenuItem>
 
               <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
-                <Link to="/dashboard/categories"> Categories</Link>
+                <Link href="/dashboard/new-post-ads">
+                  <a> Post Ads</a>
+                </Link>
+              </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faSearch} />}>
+                <Link href="/dashboard/search-ads">
+                  <a>Search Ads</a>
+                </Link>
+              </MenuItem>
+              <MenuItem icon={<CgProfile />}>
+                <Link href="/dashboard/profile">
+                  <a>Profile</a>
+                </Link>
+              </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faUsers} />}>
+                <Link href="/dashboard/users">
+                  <a>Users</a>
+                </Link>
+              </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faPager} />}>
+                <Link href="/dashboard/pages">
+                  asfas
+                  {/* <SubMenu title=" Pages">
+                    <MenuItem>
+                      <Link href="/dashboard/addNewPage">
+                        <a>Add New Page</a>
+                      </Link>
+                    </MenuItem>
+                  </SubMenu> */}
+                </Link>
+              </MenuItem>
+
+              <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
+                <Link href="/dashboard/categories">
+                  <a>Categories</a>
+                </Link>
               </MenuItem>
               <MenuItem icon={<GoLocation />}>
-                <Link to="/dashboard/manage-locations"> Manage Locations</Link>
+                <Link href="/dashboard/manage-locations">
+                  <a>Manage Locations</a>
+                </Link>
               </MenuItem>
               <MenuItem icon={<FontAwesomeIcon icon={faDollar} />}>
-                <Link to="/dashboard/payment"> Payment</Link>
+                <Link href="/dashboard/payment">
+                  <a>Payment</a>
+                </Link>
               </MenuItem>
               <MenuItem
                 icon={<GrPlan style={{ backgroundColor: "lightgray" }} />}
               >
-                <Link to="/dashboard/packages"> Packages</Link>
+                <Link href="/dashboard/packages">
+                  <a>Packages</a>
+                </Link>
               </MenuItem>
               <MenuItem
                 icon={<MdSettings style={{ backgroundColor: "lightgray" }} />}
               >
-                <Link to="/dashboard/settings"> Settings</Link>
+                <Link href="/dashboard/settings">
+                  <a>Settings</a>
+                </Link>
               </MenuItem>
             </Menu>
           </SidebarContent>
           <SidebarFooter className=" text-center">
-            <Link
+            {/* <Link
               className="text-decoration-none text-secondary"
-              to="/dashboard/footers"
+              href="/dashboard/footers"
             >
               {" "}
-              <Menu iconShape="square">
-                <SubMenu title=" Footers">
-                  <MenuItem>
-                    <Link to="/dashboard/detail">Detail </Link>
-                  </MenuItem>
-                  <SubMenu title="Columns">
+              <a>
+                {" "}
+                <Menu iconShape="square">
+                  <SubMenu title=" Footers">
                     <MenuItem>
-                      <Link to={`/dashboard/columns/col${1}`}>Col 1</Link>{" "}
+                      <Link href="/dashboard/detail">
+                        <a>Detail</a>
+                      </Link>
                     </MenuItem>
+                    <SubMenu title="Columns">
+                      <MenuItem>
+                        <Link href={`/dashboard/columns/col${1}`}>Col 1</Link>{" "}
+                      </MenuItem>
+                      <MenuItem>
+                        {" "}
+                        <Link href={`/dashboard/columns/col${2}`}>
+                          Col 2
+                        </Link>{" "}
+                      </MenuItem>
+                      <MenuItem>
+                        {" "}
+                        <Link href={`/dashboard/columns/col${3}`}>
+                          Col 3
+                        </Link>{" "}
+                      </MenuItem>
+                      <MenuItem>
+                        {" "}
+                        <Link href={`/dashboard/columns/col${4}`}>Col 4</Link>
+                      </MenuItem>
+                    </SubMenu>
                     <MenuItem>
-                      {" "}
-                      <Link to={`/dashboard/columns/col${2}`}>Col 2</Link>{" "}
-                    </MenuItem>
-                    <MenuItem>
-                      {" "}
-                      <Link to={`/dashboard/columns/col${3}`}>Col 3</Link>{" "}
-                    </MenuItem>
-                    <MenuItem>
-                      {" "}
-                      <Link to={`/dashboard/columns/col${4}`}>Col 4</Link>
+                      <Link href="/dashboard/subFooter">Sub Footer </Link>
                     </MenuItem>
                   </SubMenu>
-                  <MenuItem>
-                    <Link to="/dashboard/subFooter">Sub Footer </Link>
-                  </MenuItem>
-                </SubMenu>
-              </Menu>
-            </Link>
+                </Menu>
+              </a>
+            </Link> */}
           </SidebarFooter>
         </ProSidebar>
       </div>
