@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faImage, faMinus } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImage, faMinus } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 // import "./AddImages.css";
 const FooterImages = ({ images, setImages }) => {
   const handleImageChange = (files) => {
@@ -33,11 +34,11 @@ const FooterImages = ({ images, setImages }) => {
       {/* show images preview */}
       <div className="mt-2 w-100 d-inline-block">
         {images &&
-          images.map((image) => (
-            <div className="position-relative d-inline-block me-3">
-              <img
+          images.map((image, i) => (
+            <div key={i} className="position-relative d-inline-block me-3">
+              <Image
                 className="rounded-3 single-img  mb-2 shadow"
-                style={{ width: '100px', height: '80px', objectFit: 'cover' }}
+                style={{ width: "100px", height: "80px", objectFit: "cover" }}
                 src={URL.createObjectURL(image)}
                 alt=""
               />

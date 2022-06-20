@@ -6,7 +6,7 @@ import { BsFillFileEarmarkPostFill } from "react-icons/bs";
 
 import { ImStatsBars, ImStatsDots } from "react-icons/im";
 import { FiClock } from "react-icons/fi";
-import DashboardNav from "../DashboardNav/DashboardNav";
+import DashboardNav from "../DashboardNav";
 
 const DashboardHome = () => {
   return (

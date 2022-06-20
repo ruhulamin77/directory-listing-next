@@ -12,3 +12,6 @@ export { default as ProfileHome } from "./Profile/ProfileHome";
 export { default as ManageAds } from "./Profile/ManageAds";
 export { default as VerifyBadge } from "./Profile/VerifyBadge";
 export { default as ProfileSetting } from "./Profile/ProfileSetting";
+export { default as DashboardLayout } from "./Dashboard";
+export { default as DashboardNav } from "./Dashboard/DashboardNav";
+export { default as DashboardHome } from "./Dashboard/DashboardHome";

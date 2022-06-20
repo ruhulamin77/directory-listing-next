@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React from 'react';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import Link from "next/link";
+import React from "react";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 
 const DashboardNav = ({ title }) => {
   return (
     <div
-      className="w-100 text-white py-1 px-2 d-flex justify-content-between"
+      className="bg-dark w-100 text-white py-1 px-2 d-flex h-25 justify-content-between"
       style={{
-        background: '#1d1d1d',
-        position: 'sticky',
-        top: '0',
-        zIndex: '99',
+        // background: "#1d1d1d",
+        position: "sticky",
+        top: "0",
+        zIndex: "99",
       }}
     >
       <h3>{title}</h3>
@@ -25,9 +25,9 @@ const DashboardNav = ({ title }) => {
         />
         <DropdownButton
           className="ms-3"
-          id={'menu'}
-          variant={'secondary'}
-          title={'Kamal'}
+          id={"menu"}
+          variant={"secondary"}
+          title={"Kamal"}
         >
           <Dropdown.Item as={Link} to="/dashboard/home" eventKey="1">
             Dashboard

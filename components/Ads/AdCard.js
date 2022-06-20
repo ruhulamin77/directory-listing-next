@@ -1,7 +1,8 @@
-import moment from 'moment';
-import Link from 'next/link';
-import React from 'react';
-import { BsCalendar4 } from 'react-icons/bs';
+import moment from "moment";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { BsCalendar4 } from "react-icons/bs";
 
 const AdCard = ({ post }) => {
   return (
@@ -13,13 +14,13 @@ const AdCard = ({ post }) => {
               {post.images.length === 1 ? (
                 post.images.map((item, index) => (
                   <div key={index} className="border-end">
-                    <img
+                    <Image
                       src={`http://localhost:5000/${item}`}
                       className="img-fluid rounded-start"
                       style={{
-                        height: '200px',
-                        width: '100%',
-                        objectFit: 'contain',
+                        height: "200px",
+                        width: "100%",
+                        objectFit: "contain",
                       }}
                       alt={post.title}
                     />
@@ -36,16 +37,16 @@ const AdCard = ({ post }) => {
                       <div
                         key={index}
                         className={`carousel-item ${
-                          index === 0 ? 'active' : ''
+                          index === 0 ? "active" : ""
                         }`}
                       >
                         <img
                           src={`http://localhost:5000/${item}`}
                           className="img-fluid rounded-start"
                           style={{
-                            height: '200px',
-                            width: '100%',
-                            objectFit: 'contain',
+                            height: "200px",
+                            width: "100%",
+                            objectFit: "contain",
                           }}
                           alt={post.title}
                         />
@@ -89,7 +90,7 @@ const AdCard = ({ post }) => {
                       {/* Available from:{' '} */}
                       {[
                         ...post.locations.map((location) => location.country),
-                      ].join(', ')}
+                      ].join(", ")}
                     </ul>
                   </div>
                   <h6 className="card-title text-success">
