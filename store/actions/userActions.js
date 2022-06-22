@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -36,7 +36,7 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   CLEAR_ERRORS,
-} from '../constants/userConstants';
+} from "../constants/userConstants";
 
 // Login
 export const loginUser = (loginData) => async (dispatch) => {
@@ -45,11 +45,15 @@ export const loginUser = (loginData) => async (dispatch) => {
 
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
 
-    const { data } = await axios.post('/api/login', loginData, config);
+    const { data } = await axios.post(
+      "http://localhost:5000/api/login",
+      loginData,
+      config
+    );
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
@@ -67,11 +71,15 @@ export const registerUser = (userData) => async (dispatch) => {
 
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
-
-    const { data } = await axios.post('/api/register', userData, config);
+    console.log(userData);
+    const { data } = await axios.post(
+      " http://localhost:5000/api/register",
+      userData,
+      config
+    );
 
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -87,8 +95,8 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get('/api/me');
-
+    const { data } = await axios.get(" http://localhost:5000/api/me");
+    console.log(data);
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({
@@ -105,12 +113,12 @@ export const updateProfile = (userData) => async (dispatch) => {
 
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
 
     const { data } = await axios.put(
-      '/api/me/update-profile',
+      "/api/me/update-profile",
       userData,
       config
     );
@@ -131,12 +139,12 @@ export const updatePassword = (passwordData) => async (dispatch) => {
 
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
 
     const { data } = await axios.put(
-      '/api/me/update-password',
+      "/api/me/update-password",
       passwordData,
       config
     );
@@ -201,7 +209,7 @@ export const updatePassword = (passwordData) => async (dispatch) => {
 // Logout
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get('/api/logout');
+    await axios.get("/api/logout");
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
@@ -217,7 +225,7 @@ export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
 
-    const { data } = await axios.get('/api/admin/users');
+    const { data } = await axios.get("/api/admin/users");
 
     dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
   } catch (error) {
@@ -251,7 +259,7 @@ export const updateUser = (id, role) => async (dispatch) => {
 
     const config = {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     };
 

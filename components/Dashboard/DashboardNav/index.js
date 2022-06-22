@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
@@ -16,7 +17,7 @@ const DashboardNav = ({ title }) => {
     >
       <h3>{title}</h3>
       <div className="d-flex ">
-        <img
+        <Image
           className="rounded-circle"
           src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
           alt="profile image"

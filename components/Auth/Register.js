@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { registerUser } from '../../store/actions/userActions';
-import Link from 'next/link';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { registerUser } from "../../store/actions/userActions";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Register = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const { loading, error, isAuthenticated } = useSelector(
     (state) => state.auth
   );
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    phone: '',
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    phone: "",
   });
 
   useEffect(() => {
     if (isAuthenticated) {
-      toast.success('You are logged in');
-      navigate('/');
+      toast.success("You are logged in");
+      router.push("/");
     }
     if (error) {
       toast.error(error);
@@ -38,7 +40,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
-      toast.success('Password and Confirm Password do not match');
+      toast.success("Password and Confirm Password do not match");
       return;
     }
     const registerData = {
@@ -53,7 +55,7 @@ const Register = () => {
 
   return (
     <div>
-      <div className="container-sm" style={{ maxWidth: '600px' }}>
+      <div className="container-sm" style={{ maxWidth: "600px" }}>
         <div className="card my-5">
           <div className="my-3 mx-auto card-body w-100">
             <h2 className="card-title">Register</h2>
@@ -65,7 +67,7 @@ const Register = () => {
                 <input
                   type="text"
                   className={`form-control ${
-                    formData.name.length > 0 ? 'is-valid' : ''
+                    formData.name.length > 0 ? "is-valid" : ""
                   }`}
                   id="name"
                   name="name"
@@ -84,10 +86,10 @@ const Register = () => {
                     formData.email.match(
                       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
                     )
-                      ? 'is-valid'
-                      : formData.email === ''
-                      ? ''
-                      : 'is-invalid'
+                      ? "is-valid"
+                      : formData.email === ""
+                      ? ""
+                      : "is-invalid"
                   }`}
                   id="email"
                   name="email"
@@ -104,10 +106,10 @@ const Register = () => {
                   type="password"
                   className={`form-control ${
                     formData.password.length >= 6
-                      ? 'is-valid'
-                      : formData.password === ''
-                      ? ''
-                      : 'is-invalid'
+                      ? "is-valid"
+                      : formData.password === ""
+                      ? ""
+                      : "is-invalid"
                   }`}
                   id="password"
                   name="password"
@@ -125,10 +127,10 @@ const Register = () => {
                   className={`form-control ${
                     formData.password === formData.confirmPassword &&
                     formData.password.length >= 6
-                      ? 'is-valid'
-                      : formData.confirmPassword === ''
-                      ? ''
-                      : 'is-invalid'
+                      ? "is-valid"
+                      : formData.confirmPassword === ""
+                      ? ""
+                      : "is-invalid"
                   }`}
                   id="confirmPassword"
                   name="confirmPassword"
@@ -145,7 +147,7 @@ const Register = () => {
                 <input
                   type="text"
                   className={`form-control ${
-                    formData.phone.length > 0 ? 'is-valid' : ''
+                    formData.phone.length > 0 ? "is-valid" : ""
                   }`}
                   id="phone"
                   name="phone"
@@ -159,10 +161,10 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={
-                  formData.name === '' ||
-                  formData.email === '' ||
-                  formData.password === '' ||
-                  formData.confirmPassword === ''
+                  formData.name === "" ||
+                  formData.email === "" ||
+                  formData.password === "" ||
+                  formData.confirmPassword === ""
                 }
                 className="btn btn-primary w-100"
               >
@@ -171,13 +173,13 @@ const Register = () => {
                     <span className="visually-hidden">Loading...</span>
                   </div>
                 ) : (
-                  'Register'
+                  "Register"
                 )}
               </button>
             </form>
             <p className="text-center mt-3">
-              Already have an account?{' '}
-              <Link href="/login">
+              Already have an account?{" "}
+              <Link href="/user/login">
                 <a>Login</a>
               </Link>
             </p>
