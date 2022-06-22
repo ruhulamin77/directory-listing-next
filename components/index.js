@@ -18,3 +18,4 @@ export { default as DashboardHome } from "./Dashboard/DashboardHome";
 export { default as Headers } from "./Dashboard/Headers";
 export { default as SearchAds } from "./Dashboard/SearchAds";
 export { default as Profile } from "./Dashboard/Profile";
+export { default as Users } from "./Dashboard/Users";
