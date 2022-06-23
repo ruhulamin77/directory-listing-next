@@ -4,11 +4,10 @@ import { getAllCategories } from '../store/actions/categoryActions';
 import { wrapper } from '../store/store';
 import { loadUser } from '../store/actions/userActions';
 import { useSelector } from 'react-redux';
-import nookies from 'nookies';
 
 const HomePage = () => {
   const { user } = useSelector((state) => state.auth);
-  console.log('user', user);
+  console.log(user, 'user');
   return (
     <Layout title="Home">
       <Location />
@@ -18,11 +17,16 @@ const HomePage = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async (req) => {
-    await store.dispatch(getAllCategories());
+  (store) =>
+    async ({ req }) => {
+      await store.dispatch(getAllCategories());
 
-    // await store.dispatch(loadUser());
-  }
+      const { token } = ('req', req.cookies);
+      console.log(token);
+      if (token) {
+        await store.dispatch(loadUser(token));
+      }
+    }
 );
 
 export default HomePage;
