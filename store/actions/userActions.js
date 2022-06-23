@@ -37,7 +37,7 @@ import {
   LOGOUT_FAIL,
   CLEAR_ERRORS,
 } from "../constants/userConstants";
-
+import Cookies from "js-cookie";
 // Login
 export const loginUser = (loginData) => async (dispatch) => {
   try {
@@ -54,6 +54,10 @@ export const loginUser = (loginData) => async (dispatch) => {
       loginData,
       config
     );
+    // set token
+    const token = data?.token;
+    Cookies.set("token", token, { expires: 7 });
+    // console.log(data);
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
@@ -91,12 +95,15 @@ export const registerUser = (userData) => async (dispatch) => {
 };
 
 // Load User
-export const loadUser = () => async (dispatch) => {
+export const loadUser = (token) => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
-
-    const { data } = await axios.get(" http://localhost:5000/api/me");
-    console.log(data);
+    const header = {
+      Authorization: token,
+    };
+    const { data } = await axios.get(" http://localhost:5000/api/me", {
+      headers: header,
+    });
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -210,7 +217,10 @@ export const updatePassword = (passwordData) => async (dispatch) => {
 // Logout
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get("/api/logout");
+    await axios.get("http://localhost:5000/api/logout");
+
+    // remove cookies
+    Cookies.remove("token");
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
