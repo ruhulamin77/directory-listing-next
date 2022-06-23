@@ -1,53 +1,49 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
-import DashboardNav from "../DashboardNav/DashboardNav";
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Button, Form, FormControl, InputGroup } from 'react-bootstrap';
+import DashboardNav from '../DashboardNav/DashboardNav';
 
-
-
-import AddLocationModal from "./AddLocationModal";
-import EditLocation from "./EditLocation";
+import AddLocationModal from './AddLocationModal';
+import EditLocation from './EditLocation';
 const ManageLocations = () => {
   const [locations, setLocations] = useState([
     {
       _id: 634163136854,
-      countryName: "Bangladesh",
+      countryName: 'Bangladesh',
       states: [
-        { Name: "Dhaka", _id: 64564464556 },
-        { Name: "Ctg", _id: 216344444645313 },
-        { Name: "Rangpur", _id: 21634644445313 },
-        { Name: "Mymensing", _id: 21634554645313 },
+        { Name: 'Dhaka', _id: 64564464556 },
+        { Name: 'Ctg', _id: 216344444645313 },
+        { Name: 'Rangpur', _id: 21634644445313 },
+        { Name: 'Mymensing', _id: 21634554645313 },
       ],
     },
     {
       _id: 634163135466854,
-      countryName: "India",
+      countryName: 'India',
       states: [
-        { Name: "Delhi", _id: 645645454456 },
-        { Name: "Kalkata", _id: 2165454344645313 },
-        { Name: "Asham", _id: 216545346454313 },
+        { Name: 'Delhi', _id: 645645454456 },
+        { Name: 'Kalkata', _id: 2165454344645313 },
+        { Name: 'Asham', _id: 216545346454313 },
       ],
     },
     {
       _id: 6341645663136854,
-      countryName: "USA",
+      countryName: 'USA',
       states: [
-        { Name: "New York", _id: 64564464556 },
-        { Name: "Wasington DC", _id: 216344444645313 },
-       
+        { Name: 'New York', _id: 64564464556 },
+        { Name: 'Wasington DC', _id: 216344444645313 },
       ],
     },
     {
       _id: 63416313681154,
-      countryName: "Uk",
+      countryName: 'Uk',
       states: [
-        { Name: "London", _id: 645645454456 },
-        { Name: "Cambridge", _id: 2165454344645313 },
-        { Name: "Liverpool", _id: 216545346454313 },
+        { Name: 'London', _id: 645645454456 },
+        { Name: 'Cambridge', _id: 2165454344645313 },
+        { Name: 'Liverpool', _id: 216545346454313 },
       ],
-    }
-
+    },
   ]);
 
   const [country, setCountry] = useState(null);
@@ -132,7 +128,7 @@ const ManageLocations = () => {
                 <h6>States</h6>
                 <div>
                   <Button onClick={() => setStatesModal(true)} size="sm">
-                    Add New{" "}
+                    Add New{' '}
                     <FontAwesomeIcon className="mb-0" size="md" icon={faPlus} />
                   </Button>
                 </div>
@@ -162,14 +158,14 @@ export default ManageLocations;
 
 const CountriesListItem = (props) => {
   const { countryName, _id } = props.category;
-  const { handleItemClick, activeCategory,  handleEditCountryBtn } = props;
+  const { handleItemClick, activeCategory, handleEditCountryBtn } = props;
 
   return (
     <li
       onClick={() => handleItemClick(_id)}
       className="list-group-item d-flex align-items-center justify-content-between"
     >
-      <div className={`${activeCategory?._id === _id && "text-info"}`}>
+      <div className={`${activeCategory?._id === _id && 'text-info'}`}>
         {countryName}
       </div>
       <div className="d-flex align-items-center">

@@ -2,13 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["www.kindpng.com"],
+    domains: ['www.kindpng.com', 'images.pexels.com'],
   },
   async rewrites() {
     return [
       {
-        source: "/api/:path*",
-        destination: "http://localhost:5000/:path*",
+        source: '/api/:path*',
+        destination: 'http://localhost:5000/:path*',
       },
     ];
   },

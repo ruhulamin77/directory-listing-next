@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import DashboardNav from "../DashboardNav/DashboardNav";
-import AddImages from "../PostAds/AddImages";
+import { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import DashboardNav from '../DashboardNav/DashboardNav';
+import AddImages from '../PostAds/AddImages';
 
 const AddNewPage = () => {
   const [data, setData] = useState({});
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
   const [description, setDescription] = useState({});
-  const [position, setPosition] = useState("");
+  const [position, setPosition] = useState('');
   const [images, setImages] = useState([]);
   // title
   const handleTitle = (e) => {
@@ -72,13 +72,14 @@ const AddNewPage = () => {
 
           <Form.Group className="mb-3">
             <Form.Label className="fw-bold d-block">Position</Form.Label>
-            {["Header", "Footer"].map((label) => (
+            {['Header', 'Footer'].map((label, index) => (
               <Form.Check
+                key={index}
                 className=""
                 inline
                 label={label}
                 name="group1"
-                type={"checkbox"}
+                type={'checkbox'}
                 id={`${label}`}
                 onClick={handlePosition}
               />
