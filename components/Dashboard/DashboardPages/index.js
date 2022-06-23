@@ -1,5 +1,6 @@
-import { Button, Col, Form, Row } from 'react-bootstrap';
-import DashboardNav from '../DashboardNav/DashboardNav';
+import React from "react";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import DashboardNav from "../DashboardNav/";
 
 const Pages = () => {
   // handle header
@@ -14,13 +15,12 @@ const Pages = () => {
             <h4>Header</h4>
             <Form>
               <div className="mb-3">
-                {['Page 1', 'Page 2'].map((label, index) => (
+                {["Page 1", "Page 2"].map((label) => (
                   <Form.Check
-                    key={index}
-                    className=""
+                    key={1}
                     label={label}
                     name="group1"
-                    type={'checkbox'}
+                    type={"checkbox"}
                     id={`${label}`}
                     onClick={handleHeader}
                   />

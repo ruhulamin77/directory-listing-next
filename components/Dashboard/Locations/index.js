@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { FaTrashAlt, FaChevronDown } from "react-icons/fa";
-import { FiEdit } from "react-icons/fi";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { FaTrashAlt, FaChevronDown } from 'react-icons/fa';
+import { FiEdit } from 'react-icons/fi';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   deleteLocation,
   getLocations,
-} from "../../../store/actions/locationActions";
-import ManageLocationForm from "./ManageLocationForm";
+} from '../../../store/actions/locationActions';
+import ManageLocationForm from './ManageLocationForm';
 
 const Locations = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const Locations = () => {
 
   const handleDelete = (id) => {
     const confirm = window.confirm(
-      "Are you sure you want to delete this location?"
+      'Are you sure you want to delete this location?'
     );
 
     if (confirm) {

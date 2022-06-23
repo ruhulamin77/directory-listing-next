@@ -4,6 +4,7 @@ import { getAllCategories } from '../store/actions/categoryActions';
 import { wrapper } from '../store/store';
 import { loadUser } from '../store/actions/userActions';
 import { useSelector } from 'react-redux';
+import nookies from 'nookies';
 
 const HomePage = () => {
   const { user } = useSelector((state) => state.auth);
@@ -17,7 +18,7 @@ const HomePage = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async () => {
+  (store) => async (req) => {
     await store.dispatch(getAllCategories());
 
     // await store.dispatch(loadUser());

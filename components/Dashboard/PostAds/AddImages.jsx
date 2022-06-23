@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsImages } from "react-icons/bs";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
-import "./AddImages.css";
+// import "./AddImages.css";
 import { Draggable, Droppable, DragDropContext } from "react-beautiful-dnd";
 import { IoIosCloseCircle } from "react-icons/io";
 

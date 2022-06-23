@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import DashboardNav from '../DashboardNav/DashboardNav';
+import DashboardNav from '../DashboardNav/';
 import AddImages from '../PostAds/AddImages';
 
 const AddNewPage = () => {
@@ -74,7 +74,7 @@ const AddNewPage = () => {
             <Form.Label className="fw-bold d-block">Position</Form.Label>
             {['Header', 'Footer'].map((label, index) => (
               <Form.Check
-                key={index}
+                key={label}
                 className=""
                 inline
                 label={label}

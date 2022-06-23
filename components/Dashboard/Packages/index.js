@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Button, Card, Col, ListGroup, Row } from "react-bootstrap";
-import DashboardNav from "../DashboardNav/DashboardNav";
-import "./package.css";
+import DashboardNav from "../DashboardNav/";
+// import "./package.css";
 import { BsFillCloudCheckFill } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import PackageModal from "./PackageModal";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Packages = () => {
   const [show, setShow] = useState(false);
@@ -59,10 +59,13 @@ const Packages = () => {
         <h3>Find simple plans for Get Started</h3>
       </div> */}
       <div className=" my-5  d-flex align-items-center justify-content-center">
-        <Row xs={1} md={3} className="g-5">
+        <Row xs={1} md={2} lg={3} className="g-5">
           {" "}
           {packages.map((pack) => (
-            <Col className="  d-flex align-items-center justify-content-center">
+            <Col
+              key={pack.packages}
+              className="  d-flex align-items-center justify-content-center"
+            >
               <Card
                 style={{
                   width: "18rem",
@@ -93,24 +96,27 @@ const Packages = () => {
                   <Card.Text>
                     <ListGroup>
                       {pack.features.map((e) => (
-                        <ListGroup.Item className="border-0">
+                        <ListGroup.Item key={e.key} className="border-0">
                           <BsFillCloudCheckFill className="text-primary" /> {e}
                         </ListGroup.Item>
                       ))}
                     </ListGroup>
                   </Card.Text>
-                  <div className="  d-flex align-items-center justify-content-center">
+                  <div className="  d-flex align-items-center justify-content-between mx-3">
                     <Button
                       as={Link}
-                      to={`/dashboard/packages/${pack.title}`}
+                      href={`/dashboard/packages/${pack.title}`}
                       onClick={handleShow}
                       className="mx-2"
                       variant="warning"
                     >
-                      <FaEdit />
-                      {" Edit "}
+                      <a>
+                        <FaEdit />
+                        {" Edit "}
+                      </a>
                     </Button>
                     <Button className="mx-2" variant="danger">
+                      {" "}
                       <MdDelete />
                       {" Delete "}
                     </Button>
@@ -119,7 +125,7 @@ const Packages = () => {
               </Card>
               {console.log("pack", pack)}
 
-              <PackageModal pack={pack} show={show} setShow={setShow} />
+              {/* <PackageModal pack={pack} show={show} setShow={setShow} /> */}
             </Col>
           ))}
         </Row>

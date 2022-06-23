@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import { Anchor, Dropdown } from "react-bootstrap";
 
 const DashboardNav = ({ title }) => {
   return (
@@ -24,25 +24,26 @@ const DashboardNav = ({ title }) => {
           width="40"
           height="40"
         />
-        <DropdownButton
-          className="ms-3"
-          id={"menu"}
-          variant={"secondary"}
-          title={"Kamal"}
-        >
-          <Dropdown.Item as={Link} to="/dashboard/home" eventKey="1">
-            Dashboard
-          </Dropdown.Item>
+        <Dropdown>
+          <Dropdown.Toggle variant="secondary">Kamal</Dropdown.Toggle>
 
-          <Dropdown.Item as={Link} to="/dashboard/userProfile" eventKey="2">
-            Profile
-          </Dropdown.Item>
-          <Dropdown.Item as={Link} eventKey="3" to="/dashboard/settings" active>
-            Setting
-          </Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item eventKey="4">Logout</Dropdown.Item>
-        </DropdownButton>
+          <Dropdown.Menu variant="dark">
+            <Dropdown.Item>
+              <Link href="/admin/dashboard/">
+                <a className="d-block text-light">Dashboard</a>
+              </Link>{" "}
+            </Dropdown.Item>
+
+            <Dropdown.Item>
+              <Link href="/admin/dashboard/profile">Profile</Link>
+            </Dropdown.Item>
+            <Link href="/admin/dashboard/settings">
+              <a> Setting </a>
+            </Link>
+            <Dropdown.Divider />
+            <Dropdown.Item active>Logout</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     </div>
   );

@@ -10,10 +10,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
-import { Accordion } from 'react-bootstrap';
 import { CgProfile } from 'react-icons/cg';
-import { GoLocation } from 'react-icons/go';
-import { MdSettings } from 'react-icons/md';
+import { RiArrowDownSLine } from 'react-icons/ri';
 import {
   Menu,
   MenuItem,
@@ -21,8 +19,14 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-  SubMenu,
 } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
+
+import { Accordion } from 'react-bootstrap';
+
+import { GoLocation } from 'react-icons/go';
+import { MdSettings } from 'react-icons/md';
+
 import 'react-pro-sidebar/dist/css/styles.css';
 
 import Link from 'next/link';
@@ -84,18 +88,86 @@ const Sidebar = () => {
                   <a>Users</a>
                 </Link>
               </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faPager} />}>
-                <Link href="/admin/dashboard/pages">
-                  {/* <SubMenu title=" Pages">
-                    <MenuItem>
-                      <Link href="/admin/dashboard/addNewPage">
-                        <a>Add New Page</a>
-                      </Link>
-                    </MenuItem>
-                  </SubMenu> */}
-                  <a href="">Pages</a>
-                </Link>
+              <MenuItem
+                className="accordion"
+                id="accordionExample"
+                // icon={<FontAwesomeIcon icon={faPager} />}
+              >
+                <div className="accordion-header" id="headingOne">
+                  <div
+                    className=" collapsed d-flex justify-content-between"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="false"
+                    aria-controls="collapseOne"
+                  >
+                    <div>
+                      {' '}
+                      {
+                        <FontAwesomeIcon className="ms-2 me-3" icon={faPager} />
+                      }{' '}
+                      Pages
+                    </div>
+                    <RiArrowDownSLine />
+                  </div>
+                </div>
+                <ul
+                  id="collapseOne"
+                  className="accordion-collapse collapse "
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#accordionExample"
+                >
+                  <MenuItem className="ms-5">
+                    <Link href="/admin/dashboard/pages">
+                      <a style={{ fontSize: '14px' }}>All Pages</a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem className="ms-5">
+                    <Link href="/admin/dashboard/pages/addNewPage">
+                      <a style={{ fontSize: '14px' }}>Add New Page</a>
+                    </Link>
+                  </MenuItem>
+                </ul>
               </MenuItem>
+              {/* <MenuItem
+                className="dropend"
+                icon={<FontAwesomeIcon icon={faPager} />}
+              >
+                <div
+                  className="dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Pages
+                </div>
+
+                <ul className="dropdown-menu dropdown-menu-dark">
+                  <MenuItem className="dropdown-item">
+                    <Link href="/admin/dashboard/pages">
+                      <a style={{ fontSize: "14px" }}>All Pages</a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem className="dropdown-item ">
+                    <Link href="/admin/dashboard/pages/addNewPage">
+                      <a style={{ fontSize: "14px" }}>Add New Page</a>
+                    </Link>
+                  </MenuItem>
+                </ul>
+              </MenuItem> */}
+              {/* <MenuItem icon={<FontAwesomeIcon icon={faPager} />}>
+                <SubMenu title=" Pages" >
+                  <MenuItem>
+                    <Link href="/admin/dashboard/pages">
+                      <a>All Pages</a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link href="/admin/dashboard/addNewPage">
+                      <a>Add New Page</a>
+                    </Link>
+                  </MenuItem>
+                </SubMenu>
+              </MenuItem> */}
 
               <div className="bg-dark" style={{ backgroundColor: 'black' }}>
                 <Accordion
