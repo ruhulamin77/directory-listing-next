@@ -40,7 +40,8 @@ const profileLinks = [
 
 const ProfileOffcanvas = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { user, loading } = useSelector((state) => state.loadedUser);
+  console.log("user", user);
   return (
     <div
       className="offcanvas offcanvas-end"

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { FaChevronDown, FaTrashAlt } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { FaChevronDown, FaTrashAlt } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import {
   deleteCategory,
   getAllCategories,
-} from '../../../store/actions/categoryActions';
-import DashboardNav from '../DashboardNav/DashboardNav';
-import CategoryModal from './CategoryModal';
-import UpdateCategoryModal from './UpdateCategoryModal';
+} from "../../../store/actions/categoryActions";
+import DashboardNav from "../DashboardNav/";
+import CategoryModal from "./CategoryModal";
+import UpdateCategoryModal from "./UpdateCategoryModal";
 
 const Categories = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Categories = () => {
   // Delete category
   const handleCategoryDelete = (id) => {
     const confirm = window.confirm(
-      'Are you sure you want to delete this category?'
+      "Are you sure you want to delete this category?"
     );
 
     if (confirm) {

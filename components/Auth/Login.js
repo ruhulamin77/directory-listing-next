@@ -21,7 +21,10 @@ const Login = () => {
   useEffect(() => {
     if (isAuthenticated) {
       toast.success("You are logged in");
-      router.push("/");
+      // get return url from query parameters or default to '/'
+      const returnUrl = router.query.returnUrl || "/";
+
+      router.push(returnUrl);
     }
     if (error) {
       toast.error(error);

@@ -1,15 +1,10 @@
 import React from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import DashboardNav from "../DashboardNav/DashboardNav";
+import DashboardNav from "../DashboardNav/";
 
 const Pages = () => {
-
-
-    // handle header
-    const handleHeader = () => {
-        
-    }
-
+  // handle header
+  const handleHeader = () => {};
 
   return (
     <div>
@@ -20,20 +15,16 @@ const Pages = () => {
             <h4>Header</h4>
             <Form>
               <div className="mb-3">
-              {['Page 1', 'Page 2'].map((label) => (
-  
-     
-  <Form.Check className=''
-    
-    label={label}
-    name="group1"
-    type={"checkbox"}
-              id={`${label}`}
-              onClick={handleHeader}
-  />
- 
-
-))}
+                {["Page 1", "Page 2"].map((label) => (
+                  <Form.Check
+                    key={1}
+                    label={label}
+                    name="group1"
+                    type={"checkbox"}
+                    id={`${label}`}
+                    onClick={handleHeader}
+                  />
+                ))}
               </div>
               <Button>Submit</Button>
             </Form>
