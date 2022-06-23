@@ -19,7 +19,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
       await store.dispatch(getAllCategories());
 
       const { token } = req.cookies;
-      console.log(req, "token");
+      console.log(token, "token");
       if (token) {
         await store.dispatch(loadUser(token));
       }
