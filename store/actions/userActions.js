@@ -97,6 +97,7 @@ export const loadUser = () => async (dispatch) => {
 
     const { data } = await axios.get(" http://localhost:5000/api/me");
     console.log(data);
+
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({

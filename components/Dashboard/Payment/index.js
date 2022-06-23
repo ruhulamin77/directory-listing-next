@@ -1,8 +1,8 @@
 import React from "react";
-import DashboardNav from "../DashboardNav/DashboardNav";
+import DashboardNav from "../DashboardNav/";
 import { Card, Col, Row } from "react-bootstrap";
 
-import {  FaStar,FaMoneyCheckAlt } from "react-icons/fa";
+import { FaStar, FaMoneyCheckAlt } from "react-icons/fa";
 
 import { ImStatsBars, ImStatsDots } from "react-icons/im";
 import { FiClock } from "react-icons/fi";
@@ -80,11 +80,11 @@ const Payment = () => {
             </Card.Body>
           </div>
         </Col>
-          </Row>
-          
-          {/* all wallet */}
+      </Row>
 
-          <PaymentWallet></PaymentWallet>
+      {/* all wallet */}
+
+      <PaymentWallet></PaymentWallet>
     </div>
   );
 };
