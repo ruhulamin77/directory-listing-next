@@ -40,10 +40,9 @@ const profileLinks = [
 
 const ProfileOffcanvas = () => {
   const dispatch = useDispatch();
-  const { user, loading } = useSelector((state) => state.loadedUser);
+  const { user } = useSelector((state) => state.auth);
   const router = useRouter();
 
-  console.log("user", loading);
   return (
     <div
       className="offcanvas offcanvas-end"
@@ -63,7 +62,7 @@ const ProfileOffcanvas = () => {
       </div>
       <div className=" d-flex justify-content-between flex-column h-100">
         {/* <!-- user logged in --> */}
-        {!loading ? (
+        {user?.email ? (
           <div>
             <div className="container-fluid  d-flex gap-3 align-items-center">
               <img
@@ -117,7 +116,7 @@ const ProfileOffcanvas = () => {
           </div>
         )}
 
-        {!loading && (
+        {user?.email && (
           <div
             onClick={() => {
               dispatch(logout());

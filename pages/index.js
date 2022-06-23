@@ -1,13 +1,11 @@
-import React from 'react';
-import { Category, Layout, Location } from '../components';
-import { getAllCategories } from '../store/actions/categoryActions';
-import { wrapper } from '../store/store';
-import { loadUser } from '../store/actions/userActions';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { Category, Layout, Location } from "../components";
+import { getAllCategories } from "../store/actions/categoryActions";
+import { wrapper } from "../store/store";
+import { loadUser } from "../store/actions/userActions";
 
 const HomePage = () => {
-  const { user } = useSelector((state) => state.auth);
-  console.log(user, 'user');
+ 
   return (
     <Layout title="Home">
       <Location />
@@ -21,8 +19,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
     async ({ req }) => {
       await store.dispatch(getAllCategories());
 
-      const { token } = ('req', req.cookies);
-      console.log(token);
+
+      const { token } = req.cookies;
+      console.log(token, "token");
+
+
       if (token) {
         await store.dispatch(loadUser(token));
       }

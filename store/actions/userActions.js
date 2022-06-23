@@ -47,8 +47,10 @@ export const loginUser = (loginData) => async (dispatch) => {
     );
     // set token
     const token = data?.token;
-    Cookies.set('token', token, { expires: 7 });
-    // console.log(data);
+
+    Cookies.set("token", token, { expires: 7 });
+    console.log(data);
+
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
@@ -69,12 +71,16 @@ export const registerUser = (userData) => async (dispatch) => {
         'Content-Type': 'application/json',
       },
     };
-    console.log(userData);
+
     const { data } = await axios.post(
       ' http://localhost:5000/api/register',
       userData,
       config
     );
+    // set token
+    const token = data?.token;
+    Cookies.set("token", token, { expires: 7 });
+    // console.log(token);
 
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
