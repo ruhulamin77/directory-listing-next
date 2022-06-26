@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
+import Cookies from "js-cookie";
 import {
   ALL_LOCATIONS_REQUEST,
   ALL_LOCATIONS_SUCCESS,
@@ -14,13 +15,23 @@ import {
   DELETE_LOCATION_REQUEST,
   DELETE_LOCATION_SUCCESS,
   DELETE_LOCATION_FAIL,
-} from '../constants/locationConstants';
+} from "../constants/locationConstants";
+
+// token for locations
+const token = Cookies.get("token");
+console.log(token, "token");
+
+const config = {
+  headers: {
+    Authorization: token,
+  },
+};
 
 // Get all locations
 export const getLocations = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_LOCATIONS_REQUEST });
-    const { data } = await axios.get('http://localhost:5000/api/location');
+    const { data } = await axios.get("http://localhost:5000/api/location");
     dispatch({ type: ALL_LOCATIONS_SUCCESS, payload: data.data });
   } catch (error) {
     dispatch({ type: ALL_LOCATIONS_FAIL, payload: error.message });
@@ -31,9 +42,12 @@ export const getLocations = () => async (dispatch) => {
 export const createNewLocation = (location) => async (dispatch) => {
   try {
     dispatch({ type: NEW_LOCATION_REQUEST });
+    console.log(location);
+
     const { data } = await axios.post(
-      'http://localhost:5000/api/location',
-      location
+      "http://localhost:5000/api/location",
+      location,
+      config
     );
     dispatch({ type: NEW_LOCATION_SUCCESS, payload: data });
   } catch (error) {
@@ -47,7 +61,8 @@ export const updateLocationData = (id, locationData) => async (dispatch) => {
     dispatch({ type: UPDATE_LOCATION_REQUEST });
     const { data } = await axios.put(
       `http://localhost:5000/api/location/${id}`,
-      locationData
+      locationData,
+      config
     );
     dispatch({ type: UPDATE_LOCATION_SUCCESS, payload: data });
   } catch (error) {
@@ -59,7 +74,7 @@ export const updateLocationData = (id, locationData) => async (dispatch) => {
 export const deleteLocation = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_LOCATION_REQUEST });
-    await axios.delete(`http://localhost:5000/api/location/${id}`);
+    await axios.delete(`http://localhost:5000/api/location/${id}`, config);
     dispatch({ type: DELETE_LOCATION_SUCCESS });
   } catch (error) {
     dispatch({ type: DELETE_LOCATION_FAIL, payload: error.message });

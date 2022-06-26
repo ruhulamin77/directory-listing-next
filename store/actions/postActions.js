@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
+import Cookies from "js-cookie";
 import {
   ALL_POSTS_REQUEST,
   ALL_POSTS_SUCCESS,
@@ -19,7 +20,7 @@ import {
   POST_UPDATE_RESET,
   POST_UPDATE_FAIL,
   CLEAR_ERRORS,
-} from '../constants/postConstants';
+} from "../constants/postConstants";
 
 // Get all posts
 export const getAllPosts = () => async (dispatch) => {
@@ -38,17 +39,22 @@ export const createPost = (post) => async (dispatch) => {
   try {
     dispatch({ type: NEW_POST_REQUEST });
 
+    const token = Cookies.get("token");
+    // console.log(token, "token");
+
     const config = {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
+        Authorization: token,
       },
     };
 
     const { data } = await axios.post(
-      'http://localhost:5000/api/posts',
+      "http://localhost:5000/api/posts",
       post,
       config
     );
+
     dispatch({ type: NEW_POST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

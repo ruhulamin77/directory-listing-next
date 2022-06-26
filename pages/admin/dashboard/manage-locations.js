@@ -5,7 +5,7 @@ export default function ManageLocationPage() {
   return (
     <>
       <div>
-        <DashboardLayout>
+        <DashboardLayout title="Manage Location">
           <Locations />
         </DashboardLayout>
       </div>{" "}

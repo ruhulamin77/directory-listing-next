@@ -1,5 +1,5 @@
-import React from 'react';
-import { Layout, PostAd } from '../components';
+import React from "react";
+import { Layout, PostAd } from "../components";
 
 export default function postAd() {
   return (

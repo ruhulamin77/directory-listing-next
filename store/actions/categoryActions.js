@@ -1,5 +1,6 @@
-import axios from 'axios';
-import { GiCrystalGrowth } from 'react-icons/gi';
+import axios from "axios";
+import Cookies from "js-cookie";
+import { GiCrystalGrowth } from "react-icons/gi";
 import {
   ALL_CATEGORIES_REQUEST,
   ALL_CATEGORIES_SUCCESS,
@@ -15,7 +16,17 @@ import {
   DELETE_CATEGORY_REQUEST,
   DELETE_CATEGORY_SUCCESS,
   DELETE_CATEGORY_FAIL,
-} from '../constants/categoryConstants';
+} from "../constants/categoryConstants";
+
+// token for category
+const token = Cookies.get("token");
+console.log(token, "token");
+
+const config = {
+  headers: {
+    Authorization: token,
+  },
+};
 
 // Get all categories
 export const getAllCategories = () => async (dispatch) => {
@@ -23,7 +34,7 @@ export const getAllCategories = () => async (dispatch) => {
     dispatch({
       type: ALL_CATEGORIES_REQUEST,
     });
-    const response = await axios.get('http://localhost:5000/api/categories');
+    const response = await axios.get("http://localhost:5000/api/categories");
     dispatch({
       type: ALL_CATEGORIES_SUCCESS,
       payload: response.data,
@@ -42,7 +53,11 @@ export const createNewCategory = (category) => async (dispatch) => {
     dispatch({
       type: NEW_CATEGORY_REQUEST,
     });
-    const response = await axios.post('/api/categories', category);
+    const response = await axios.post(
+      "http://localhost:5000/api/categories",
+      category,
+      config
+    );
     dispatch({
       type: NEW_CATEGORY_SUCCESS,
       payload: response.data,
@@ -61,7 +76,11 @@ export const updateCategory = (id, categoryData) => async (dispatch) => {
     dispatch({
       type: UPDATE_CATEGORY_REQUEST,
     });
-    const response = await axios.put(`/api/categories/${id}`, categoryData);
+    const response = await axios.put(
+      `http://localhost:5000/api/categories/${id}`,
+      categoryData,
+      config
+    );
     dispatch({
       type: UPDATE_CATEGORY_SUCCESS,
       payload: response.data,
@@ -80,7 +99,7 @@ export const deleteCategory = (id) => async (dispatch) => {
     dispatch({
       type: DELETE_CATEGORY_REQUEST,
     });
-    await axios.delete(`/api/categories/${id}`);
+    await axios.delete(`http://localhost:5000/api/categories/${id}`, config);
     dispatch({
       type: DELETE_CATEGORY_SUCCESS,
       payload: id,

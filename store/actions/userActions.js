@@ -95,12 +95,19 @@ export const registerUser = (userData) => async (dispatch) => {
 export const loadUser = (token) => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
-    const header = {
-      Authorization: token,
+
+    const config = {
+      headers: {
+        Authorization: token,
+      },
     };
+<<<<<<< HEAD
+    const { data } = await axios.get(" http://localhost:5000/api/me", config);
+=======
     const { data } = await axios.get(' http://localhost:5000/api/me', {
       headers: header,
     });
+>>>>>>> bb8f9af3178b475c9b635c196cb8e592f3e1d313
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {

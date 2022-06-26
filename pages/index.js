@@ -2,10 +2,9 @@ import React from "react";
 import { Category, Layout, Location } from "../components";
 import { getAllCategories } from "../store/actions/categoryActions";
 import { wrapper } from "../store/store";
-import { loadUser } from "../store/actions/userActions";
+// import { loadUser } from "../store/actions/userActions";
 
 const HomePage = () => {
- 
   return (
     <Layout title="Home">
       <Location />
@@ -19,14 +18,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
     async ({ req }) => {
       await store.dispatch(getAllCategories());
 
-
-      const { token } = req.cookies;
-      console.log(token, "token");
-
-
-      if (token) {
-        await store.dispatch(loadUser(token));
-      }
+      // const { token } = req.cookies;
+      // console.log(token, "token", req);
+      // if (token) {
+      // await store.dispatch(loadUser(token));
+      // }
     }
 );
 

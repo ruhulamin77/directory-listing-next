@@ -8,16 +8,22 @@ import {
 import DashboardNav from "../DashboardNav/";
 import CategoryModal from "./CategoryModal";
 import UpdateCategoryModal from "./UpdateCategoryModal";
+import useSWR from "swr";
 
 const Categories = () => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
   const [handler, setHandler] = useState(false);
   const updateList = () => setHandler(!handler);
+  console.log(categories, "categories");
 
   useEffect(() => {
     dispatch(getAllCategories());
   }, [dispatch, handler]);
+  // const { data, error } = useSWR(dispatch(getAllCategories()));
+
+  // if (error) return <div>failed to load</div>;
+  // if (!data) return <div>loading...</div>;
 
   // Delete category
   const handleCategoryDelete = (id) => {
