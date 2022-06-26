@@ -13,7 +13,7 @@ import {
   DELETE_LOCATION_REQUEST,
   DELETE_LOCATION_SUCCESS,
   DELETE_LOCATION_FAIL,
-} from '../constants/locationConstants';
+} from "../constants/locationConstants";
 
 export const locationsReducer = (
   state = {

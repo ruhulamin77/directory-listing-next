@@ -18,11 +18,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
     async ({ req }) => {
       await store.dispatch(getAllCategories());
 
-      const { token } = req.cookies;
-      console.log(token, "token");
-      if (token) {
-        await store.dispatch(loadUser(token));
-      }
+      // const { token } = req.cookies;
+      // console.log(token, "token", req);
+      // if (token) {
+      // await store.dispatch(loadUser(token));
+      // }
     }
 );
 

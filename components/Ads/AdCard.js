@@ -14,13 +14,13 @@ const AdCard = ({ post }) => {
               {post.images.length === 1 ? (
                 post.images.map((item, index) => (
                   <div key={index} className="border-end">
-                    <Image
+                    <img
                       src={`http://localhost:5000/${item}`}
                       className="img-fluid rounded-start"
                       style={{
                         height: "200px",
                         width: "100%",
-                        objectFit: "contain",
+                        // objectFit: "contain",
                       }}
                       alt={post.title}
                     />
@@ -46,7 +46,7 @@ const AdCard = ({ post }) => {
                           style={{
                             height: "200px",
                             width: "100%",
-                            objectFit: "contain",
+                            // objectFit: "contain",
                           }}
                           alt={post.title}
                         />

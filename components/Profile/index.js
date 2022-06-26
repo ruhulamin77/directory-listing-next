@@ -8,6 +8,7 @@ const ProfileLayout = ({ children }) => {
       {/* profile Header */}
       <ProfileHeader />
       {/* profile Header */}
+
       {/* profile children */}
       {children}
       {/* profile children */}

@@ -19,6 +19,7 @@ import {
 const ManageLocationForm = ({ updateData, updateLocation }) => {
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.locations);
+  console.log(loading, "loading");
 
   const { isUpdating, location } = updateLocation;
 
@@ -216,7 +217,7 @@ const ManageLocationForm = ({ updateData, updateLocation }) => {
         ) : isUpdating ? (
           "Update Location"
         ) : (
-          "Add New Location"
+          "Submit New Location"
         )}
       </Button>
     </Form>

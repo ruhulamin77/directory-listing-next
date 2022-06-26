@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { FiEdit } from 'react-icons/fi';
-import { BsXCircleFill } from 'react-icons/bs';
-import { useDispatch } from 'react-redux';
-import { updateCategory } from '../../../store/actions/categoryActions';
+import React, { useState } from "react";
+import { FiEdit } from "react-icons/fi";
+import { BsXCircleFill } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { updateCategory } from "../../../store/actions/categoryActions";
 
 const UpdateCategoryModal = ({ updateList, category, index }) => {
   const dispatch = useDispatch();
-  const [subCategoryName, setSubCategoryName] = useState('');
+  const [subCategoryName, setSubCategoryName] = useState("");
   const [formData, setFormData] = useState({
     name: category.name,
     subCategories: [...category.subCategories],
@@ -89,7 +89,7 @@ const UpdateCategoryModal = ({ updateList, category, index }) => {
                           subCategoryName,
                         ],
                       });
-                      setSubCategoryName('');
+                      setSubCategoryName("");
                     }}
                     disabled={!subCategoryName.trim()}
                   >

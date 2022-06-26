@@ -40,9 +40,9 @@ const profileLinks = [
 
 const ProfileOffcanvas = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { user, loading } = useSelector((state) => state.loadedUser);
   const router = useRouter();
-
+  console.log(user, "user");
   return (
     <div
       className="offcanvas offcanvas-end"
@@ -60,7 +60,7 @@ const ProfileOffcanvas = () => {
           aria-label="Close"
         ></button>
       </div>
-      <div className=" d-flex justify-content-between flex-column h-100">
+      <div className=" d-flex justify-content-between flex-column ">
         {/* <!-- user logged in --> */}
         {user?.email ? (
           <div>
@@ -78,7 +78,7 @@ const ProfileOffcanvas = () => {
               </div>
             </div>
             <hr className="my-3" />
-            <div className="h-100 overflow-auto mt-3">
+            <div className=" overflow-auto mt-3">
               <ul className="list-group">
                 {profileLinks.map((link) => (
                   <li
@@ -103,7 +103,7 @@ const ProfileOffcanvas = () => {
             </div>
           </div>
         ) : (
-          <div className="d-flex h-100 justify-content-center align-content-center">
+          <div className="d-flex justify-content-center align-content-center">
             {" "}
             <div className=" mx-3  flex-fill">
               <Link href="/user/login" type="button">

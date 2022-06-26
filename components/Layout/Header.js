@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 import {
   BsEnvelope,
   BsList,
@@ -6,10 +6,10 @@ import {
   BsPhone,
   BsSearch,
   BsTelephone,
-} from 'react-icons/bs';
-import BottomNav from './BottomNav';
-import MenuOffcanvas from './MenuOffcanvas';
-import ProfileOffcanvas from './ProfileOffcanvas';
+} from "react-icons/bs";
+import BottomNav from "./BottomNav";
+import MenuOffcanvas from "./MenuOffcanvas";
+import ProfileOffcanvas from "./ProfileOffcanvas";
 
 const Header = () => {
   return (
