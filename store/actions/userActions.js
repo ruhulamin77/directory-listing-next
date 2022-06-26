@@ -1,43 +1,34 @@
-import axios from "axios";
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  REGISTER_USER_REQUEST,
-  REGISTER_USER_SUCCESS,
-  REGISTER_USER_FAIL,
-  LOAD_USER_REQUEST,
-  LOAD_USER_SUCCESS,
-  LOAD_USER_FAIL,
-  UPDATE_PROFILE_REQUEST,
-  UPDATE_PROFILE_SUCCESS,
-  UPDATE_PROFILE_FAIL,
-  UPDATE_PASSWORD_REQUEST,
-  UPDATE_PASSWORD_SUCCESS,
-  UPDATE_PASSWORD_FAIL,
-  FORGOT_PASSWORD_REQUEST,
-  FORGOT_PASSWORD_SUCCESS,
-  FORGOT_PASSWORD_FAIL,
-  NEW_PASSWORD_REQUEST,
-  NEW_PASSWORD_SUCCESS,
-  NEW_PASSWORD_FAIL,
+  ALL_USERS_FAIL,
   ALL_USERS_REQUEST,
   ALL_USERS_SUCCESS,
-  ALL_USERS_FAIL,
-  USER_DETAILS_REQUEST,
-  USER_DETAILS_SUCCESS,
-  USER_DETAILS_FAIL,
-  UPDATE_USER_REQUEST,
-  UPDATE_USER_SUCCESS,
-  UPDATE_USER_FAIL,
+  CLEAR_ERRORS,
+  DELETE_USER_FAIL,
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
-  DELETE_USER_FAIL,
-  LOGOUT_SUCCESS,
+  LOAD_USER_FAIL,
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+  LOGIN_FAIL,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
   LOGOUT_FAIL,
-  CLEAR_ERRORS,
-} from "../constants/userConstants";
-import Cookies from "js-cookie";
+  LOGOUT_SUCCESS,
+  REGISTER_USER_FAIL,
+  REGISTER_USER_REQUEST,
+  REGISTER_USER_SUCCESS,
+  UPDATE_PASSWORD_FAIL,
+  UPDATE_PASSWORD_REQUEST,
+  UPDATE_PASSWORD_SUCCESS,
+  UPDATE_PROFILE_FAIL,
+  UPDATE_PROFILE_REQUEST,
+  UPDATE_PROFILE_SUCCESS,
+  UPDATE_USER_FAIL,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
+} from '../constants/userConstants';
 // Login
 export const loginUser = (loginData) => async (dispatch) => {
   try {
@@ -45,19 +36,21 @@ export const loginUser = (loginData) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/login",
+      'http://localhost:5000/api/login',
       loginData,
       config
     );
     // set token
     const token = data?.token;
+
     Cookies.set("token", token, { expires: 7 });
     console.log(data);
+
 
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
@@ -75,12 +68,12 @@ export const registerUser = (userData) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     const { data } = await axios.post(
-      " http://localhost:5000/api/register",
+      ' http://localhost:5000/api/register',
       userData,
       config
     );
@@ -108,7 +101,13 @@ export const loadUser = (token) => async (dispatch) => {
         Authorization: token,
       },
     };
+<<<<<<< HEAD
     const { data } = await axios.get(" http://localhost:5000/api/me", config);
+=======
+    const { data } = await axios.get(' http://localhost:5000/api/me', {
+      headers: header,
+    });
+>>>>>>> bb8f9af3178b475c9b635c196cb8e592f3e1d313
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -126,12 +125,12 @@ export const updateProfile = (userData) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     const { data } = await axios.put(
-      "/api/me/update-profile",
+      '/api/me/update-profile',
       userData,
       config
     );
@@ -152,12 +151,12 @@ export const updatePassword = (passwordData) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
     const { data } = await axios.put(
-      "/api/me/update-password",
+      '/api/me/update-password',
       passwordData,
       config
     );
@@ -222,10 +221,10 @@ export const updatePassword = (passwordData) => async (dispatch) => {
 // Logout
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get("http://localhost:5000/api/logout");
+    await axios.get('http://localhost:5000/api/logout');
 
     // remove cookies
-    Cookies.remove("token");
+    Cookies.remove('token');
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
@@ -241,7 +240,7 @@ export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
 
-    const { data } = await axios.get("/api/admin/users");
+    const { data } = await axios.get('/api/admin/users');
 
     dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
   } catch (error) {
@@ -275,7 +274,7 @@ export const updateUser = (id, role) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 

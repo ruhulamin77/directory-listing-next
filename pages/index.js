@@ -2,7 +2,7 @@ import React from "react";
 import { Category, Layout, Location } from "../components";
 import { getAllCategories } from "../store/actions/categoryActions";
 import { wrapper } from "../store/store";
-import { loadUser } from "../store/actions/userActions";
+// import { loadUser } from "../store/actions/userActions";
 
 const HomePage = () => {
   return (
