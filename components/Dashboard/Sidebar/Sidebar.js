@@ -7,11 +7,11 @@ import {
   faPager,
   faSearch,
   faUsers,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
-import { CgProfile } from 'react-icons/cg';
-import { RiArrowDownSLine } from 'react-icons/ri';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { CgProfile } from "react-icons/cg";
+import { RiArrowDownSLine } from "react-icons/ri";
 import {
   Menu,
   MenuItem,
@@ -19,18 +19,18 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
-} from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
+} from "react-pro-sidebar";
+import "react-pro-sidebar/dist/css/styles.css";
 
-import { Accordion } from 'react-bootstrap';
+import { Accordion } from "react-bootstrap";
 
-import { GoLocation } from 'react-icons/go';
-import { MdSettings } from 'react-icons/md';
+import { GoLocation } from "react-icons/go";
+import { MdSettings } from "react-icons/md";
 
-import 'react-pro-sidebar/dist/css/styles.css';
+import "react-pro-sidebar/dist/css/styles.css";
 
-import Link from 'next/link';
-import { GrPlan } from 'react-icons/gr';
+import Link from "next/link";
+import { GrPlan } from "react-icons/gr";
 // const element = <FontAwesomeIcon icon={faCoffee} />;
 
 const Sidebar = () => {
@@ -102,10 +102,10 @@ const Sidebar = () => {
                     aria-controls="collapseOne"
                   >
                     <div>
-                      {' '}
+                      {" "}
                       {
                         <FontAwesomeIcon className="ms-2 me-3" icon={faPager} />
-                      }{' '}
+                      }{" "}
                       Pages
                     </div>
                     <RiArrowDownSLine />
@@ -119,12 +119,12 @@ const Sidebar = () => {
                 >
                   <MenuItem className="ms-5">
                     <Link href="/admin/dashboard/pages">
-                      <a style={{ fontSize: '14px' }}>All Pages</a>
+                      <a style={{ fontSize: "14px" }}>All Pages</a>
                     </Link>
                   </MenuItem>
                   <MenuItem className="ms-5">
                     <Link href="/admin/dashboard/pages/addNewPage">
-                      <a style={{ fontSize: '14px' }}>Add New Page</a>
+                      <a style={{ fontSize: "14px" }}>Add New Page</a>
                     </Link>
                   </MenuItem>
                 </ul>
@@ -169,40 +169,6 @@ const Sidebar = () => {
                 </SubMenu>
               </MenuItem> */}
 
-              <div className="bg-dark" style={{ backgroundColor: 'black' }}>
-                <Accordion
-                  defaultActiveKey="0"
-                  style={{ backgroundColor: 'black' }}
-                >
-                  <Accordion.Item
-                    eventKey="1"
-                    style={{ backgroundColor: 'black' }}
-                    className="bg-dark"
-                  >
-                    <Accordion.Header
-                      className="bg-dark"
-                      style={{ backgroundColor: 'black' }}
-                    >
-                      <span className="me-3">
-                        <FontAwesomeIcon icon={faAd} />
-                      </span>{' '}
-                      <span>Pages</span>
-                    </Accordion.Header>
-                    <Accordion.Body className="m-0 p-0 bg-dark">
-                      <MenuItem>
-                        <Link href="/admin/dashboard/pages">
-                          <a className="ms-5">All Pages</a>
-                        </Link>
-                      </MenuItem>
-                      <MenuItem>
-                        <Link href="/admin/dashboard/addNewPage">
-                          <a className="ms-5">Add New Page</a>
-                        </Link>
-                      </MenuItem>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
-              </div>
               <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
                 <Link href="/admin/dashboard/categories">
                   <a>Categories</a>
@@ -219,14 +185,14 @@ const Sidebar = () => {
                 </Link>
               </MenuItem>
               <MenuItem
-                icon={<GrPlan style={{ backgroundColor: 'lightgray' }} />}
+                icon={<GrPlan style={{ backgroundColor: "lightgray" }} />}
               >
                 <Link href="/admin/dashboard/packages">
                   <a>Packages</a>
                 </Link>
               </MenuItem>
               <MenuItem
-                icon={<MdSettings style={{ backgroundColor: 'lightgray' }} />}
+                icon={<MdSettings style={{ backgroundColor: "lightgray" }} />}
               >
                 <Link href="/admin/dashboard/settings">
                   <a>Settings</a>

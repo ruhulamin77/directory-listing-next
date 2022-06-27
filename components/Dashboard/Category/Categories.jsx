@@ -126,8 +126,8 @@ const Categories = () => {
                 onHide={() => setSubCategoriesModal(false)}
               />
               <ul className="list-group list-group-flush">
-                {category.subCategories.map((c) => (
-                  <SubCategoryListItem subCategory={c} />
+                {category.subCategories.map((c, i) => (
+                  <SubCategoryListItem subCategory={c} key={i} />
                 ))}
               </ul>
             </div>
