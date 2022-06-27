@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { AiFillCar } from 'react-icons/ai';
 import { FaDog } from 'react-icons/fa';
@@ -10,14 +11,29 @@ import { useSelector } from 'react-redux';
 
 const Category = () => {
   const { categories } = useSelector((state) => state.categories);
-  console.log('categories: ', categories);
   return (
     <div>
       <Container>
         <div className="main_container">
           <h5>Browse items by category</h5>
           <div className="category mb-5" md={2} lg={4}>
-            <Link href="" className="category_item">
+            {categories.map((category, index) => (
+              <Link key={index} href="" className="category_item">
+                <a>
+                  <div className="category_icon">
+                    <GoDeviceMobile />
+                  </div>
+                  <div className="category_title">
+                    <div className="category_name">{category.name}</div>
+                    <div className="category_quantity">
+                      {Math.ceil(Math.random() * 20)} <span>ads</span>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            ))}
+
+            {/* <Link href="" className="category_item">
               <a>
                 <div className="category_icon">
                   <MdMonitor />
@@ -101,9 +117,9 @@ const Category = () => {
                   </div>
                 </div>
               </a>
-            </Link>
+            </Link> 
 
-            {/* <Link href="" className="category_item">
+             <Link href="" className="category_item">
               <div className="category_icon">
                 <GiLargeDress />
               </div>
