@@ -1,4 +1,4 @@
-import { Layout, Login } from '../../components';
+import { Layout, Login } from "../../components";
 
 export default function LoginPage() {
   return (
