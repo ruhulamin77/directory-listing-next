@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
 export default function middleware(req) {
   const { token } = req.cookies;
@@ -13,7 +13,7 @@ export default function middleware(req) {
   //   }
   // }
   // user dashboard
-  if (url.includes("/user/dashboard")) {
+  if (url.includes('/user/dashboard')) {
     //   console.log(token, url, "token");
     if (!token) {
       //   return {
@@ -22,7 +22,7 @@ export default function middleware(req) {
       //       permanent: false,
       //     },
       //   };
-      return NextResponse.redirect("/user/login");
+      // return NextResponse.redirect('/user/login');
     }
     //   try {
     //   } catch (e) {}

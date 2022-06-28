@@ -8,7 +8,6 @@ import { GoDeviceMobile } from 'react-icons/go';
 import { IoHome } from 'react-icons/io5';
 import { MdMonitor, MdOutlineChair } from 'react-icons/md';
 import { useSelector } from 'react-redux';
-
 const Category = () => {
   const { categories } = useSelector((state) => state.categories);
   return (
@@ -32,6 +31,19 @@ const Category = () => {
                 </a>
               </Link>
             ))}
+            {/* <Link href="" className="category_item">
+              <a>
+                <div className="category_icon">
+                  <MdMonitor />
+                </div>
+                <div className="category_title">
+                  <div className="category_name">Electronics</div>
+                  <div className="category_quantity">
+                    122 <span>ads</span>
+                  </div>
+                </div>
+              </a>
+            </Link> */}
 
             {/* <Link href="" className="category_item">
               <a>
