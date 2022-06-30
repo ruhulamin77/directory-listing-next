@@ -1,8 +1,13 @@
 import React from "react";
 import { Layout, ProfileLayout, ProfileHome } from "../../../components";
 import { withIronSessionSsr } from "iron-session/next";
+import { verify } from "jsonwebtoken";
+import { getSession } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 export default function UserDashboard() {
+  const { user } = useSelector((state) => state.loadedUser);
+
   return (
     <Layout title="User Profile">
       <ProfileLayout>
@@ -11,24 +16,37 @@ export default function UserDashboard() {
     </Layout>
   );
 }
-
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {
-    const user = req.session.user;
-    console.log("User: " + user);
-    // if (user === undefined || user === null) {
-    //   return {
-    //     redirect: {
-    //       destination: "/user/login",
-    //       permanent: false,
-    //     },
-    //     // notFound: true,
-    //   };
-    // }
+    const { token } = req.cookies;
+    let user;
+    // const user = req.session.user;
+    if (token) {
+      user = verify(token, process.env.JWT_SECRET);
+
+      if (user?.role !== "user") {
+        return {
+          redirect: {
+            destination: "/user/login",
+            permanent: false,
+          },
+        };
+      }
+    } else {
+      return {
+        redirect: {
+          destination: "/user/login",
+          permanent: false,
+        },
+      };
+    }
+
+    console.log("User: " + token, user);
 
     return {
       props: {
         // user: req.session.user,
+        user,
       },
     };
   },
@@ -41,3 +59,20 @@ export const getServerSideProps = withIronSessionSsr(
     },
   }
 );
+
+// export async function getServerSideProps(context) {
+//   const session = await getSession({ req: context.req });
+//   console.log("session: " + session);
+//   // if (!session) {
+//   //   return {
+//   //     redirect: {
+//   //       destination: "/user/login",
+//   //       parmanent: false,
+//   //     },
+//   //   };
+//   // }
+
+//   return {
+//     props: { session },
+//   };
+// }

@@ -63,6 +63,12 @@ const Categories = () => {
                   <div className="py-3 px-2 ps-4 bg-white text-">
                     <div className="flex-grow-1 d-flex align-items-center justify-content-between">
                       <span className="fs-5">
+                        <img
+                          src={`http://localhost:5000/${category.icon}`}
+                          height="50"
+                          width="50"
+                          alt={category.name}
+                        />
                         {category.name}
                         <span className="badge bg-primary rounded-pill ms-1">
                           {category.subCategories.length}

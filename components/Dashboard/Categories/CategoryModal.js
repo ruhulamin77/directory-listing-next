@@ -1,32 +1,47 @@
-import React, { useState } from 'react';
-import { BsXCircleFill } from 'react-icons/bs';
-import { useDispatch } from 'react-redux';
-import { createNewCategory } from '../../../store/actions/categoryActions';
+import React, { useState } from "react";
+import { BsXCircleFill } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { createNewCategory } from "../../../store/actions/categoryActions";
 
 const CategoryModal = ({ updateList }) => {
   const dispatch = useDispatch();
-  const [subCategoryName, setSubCategoryName] = useState('');
+  const [subCategoryName, setSubCategoryName] = useState("");
   const [formData, setFormData] = useState({
-    name: '',
+    name: "",
     subCategories: [],
+    icon: [],
   });
-  const { name, subCategories } = formData;
+  const { name, subCategories, icon } = formData;
+  console.log("formData", formData);
 
   const handleAddCategory = (e) => {
     e.preventDefault();
+
     setFormData({
       ...formData,
       subCategories: [...subCategories, subCategoryName],
     });
-    setSubCategoryName('');
+    setSubCategoryName("");
 
-    if (name) {
-      dispatch(createNewCategory(formData));
-      setFormData({
-        name: '',
-        subCategories: [],
+    const data = new FormData();
+    data.append("name", formData.name);
+    data.append("subCategories", formData.subCategories);
+    // data.append("icon", formData.icon[0]);
+    if (formData.icon.length > 0) {
+      formData.icon.forEach((icon) => {
+        data.append("icon", icon);
       });
     }
+
+    if (name) {
+      dispatch(createNewCategory(data));
+      setFormData({
+        name: "",
+        subCategories: [],
+        icon: [],
+      });
+    }
+
     updateList();
   };
 
@@ -52,11 +67,26 @@ const CategoryModal = ({ updateList }) => {
             ></button>
           </div>
           <div className="modal-body">
-            <form onSubmit={handleAddCategory}>
+            <form encType="multipart/form-data" onSubmit={handleAddCategory}>
               <div className="mb-3">
                 <label htmlFor="name" className="col-form-label">
                   Category
                 </label>
+                <input
+                  type="file"
+                  name="icon"
+                  className=" input-group mb-3 form-control"
+                  required
+                  id="name"
+                  accept="image/jpeg,image/png,image/jpg"
+                  multiple={false}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      icon: [...e.target.files].map((file) => file),
+                    })
+                  }
+                />
                 <input
                   type="text"
                   placeholder="Category name"
@@ -88,7 +118,7 @@ const CategoryModal = ({ updateList }) => {
                         subCategoryName,
                       ],
                     });
-                    setSubCategoryName('');
+                    setSubCategoryName("");
                   }}
                   disabled={!subCategoryName.trim()}
                 >

@@ -51,8 +51,8 @@ const PostAd = () => {
     if (success) {
       toast("Ad posted successfully");
       dispatch(clearErrors());
-      dispatch({ type: NEW_POST_RESET });
-      router.push("/all-ads");
+      // dispatch({ type: NEW_POST_RESET });
+      // router.push("/all-ads");
     }
   }, [dispatch, error, success]);
 
@@ -99,6 +99,10 @@ const PostAd = () => {
       }
 
       dispatch(createPost(formData));
+
+      formData.forEach((data) => {
+        console.log("data", data);
+      });
     }
   };
 

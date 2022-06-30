@@ -123,7 +123,7 @@ const UpdateCategoryModal = ({ updateList, category, index }) => {
                 </div>
                 <div className="mb-3">
                   <button
-                    disabled={!name.trim()}
+                    disabled={!name?.trim()}
                     type="submit"
                     data-bs-dismiss="modal"
                     className="btn btn-primary"
