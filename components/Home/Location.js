@@ -1,11 +1,11 @@
-import Link from "next/link";
-import React from "react";
-import { useSelector } from "react-redux";
+import Link from 'next/link';
+import React from 'react';
+import { useSelector } from 'react-redux';
 // import './Location.css';
 
 const Location = () => {
   const { locations } = useSelector((state) => state.locations);
-  console.log("locations:" + locations);
+  console.log('locations:' + locations);
 
   return (
     <div className="main_container">
@@ -13,7 +13,7 @@ const Location = () => {
         {locations?.map((loc, i) => (
           <div key={i} className="country">
             <div>
-              <h4 className="country_heading">{loc?.name}</h4>
+              <h5 className="country_heading">{loc?.name}</h5>
               <div className="states_container">
                 {loc.state.map((st, i) => (
                   <div key={i} className="state_column">

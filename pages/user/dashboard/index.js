@@ -18,21 +18,11 @@ export default function UserDashboard() {
 }
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {
-    const { token } = req.cookies;
-    let user;
     // const user = req.session.user;
-    if (token) {
-      user = verify(token, process.env.JWT_SECRET);
+    const { token } = req.cookies;
 
-      if (user?.role !== "user") {
-        return {
-          redirect: {
-            destination: "/user/login",
-            permanent: false,
-          },
-        };
-      }
-    } else {
+    var user = jwt.decode(token);
+    if (user.role !== "user") {
       return {
         redirect: {
           destination: "/user/login",
@@ -40,9 +30,6 @@ export const getServerSideProps = withIronSessionSsr(
         },
       };
     }
-
-    console.log("User: " + token, user);
-
     return {
       props: {
         // user: req.session.user,

@@ -1,46 +1,56 @@
-import Link from 'next/link';
-import { Container } from 'react-bootstrap';
-import { AiFillCar } from 'react-icons/ai';
-import { FaDog, FaGraduationCap, FaIndustry } from 'react-icons/fa';
-import {
-  GiCrystalGrowth,
-  GiLargeDress,
-  GiPalmTree,
-  GiTShirt,
-} from 'react-icons/gi';
-import { GoDeviceMobile } from 'react-icons/go';
-import { IoFootball, IoHome } from 'react-icons/io5';
-import {
-  MdDesignServices,
-  MdHomeWork,
-  MdMonitor,
-  MdOutlineChair,
-  MdWork,
-} from 'react-icons/md';
-// import { Link } from 'react-router-dom';
-// import './Category.css';
-
+import Link from "next/link";
+import { useEffect } from "react";
+import { Container } from "react-bootstrap";
+import { AiFillCar } from "react-icons/ai";
+import { FaDog } from "react-icons/fa";
+import { GiTShirt } from "react-icons/gi";
+import { GoDeviceMobile } from "react-icons/go";
+import { IoHome } from "react-icons/io5";
+import { MdMonitor, MdOutlineChair } from "react-icons/md";
+import { useSelector } from "react-redux";
 const Category = () => {
+  const { categories } = useSelector((state) => state.categories);
   return (
     <div>
       <Container>
         <div className="main_container">
           <h5>Browse items by category</h5>
           <div className="category mb-5" md={2} lg={4}>
-            <Link href="" className="category_item">
+            {categories.map((category, index) => (
+              <Link key={index} href="" className="category_item">
+                <a>
+                  <div className="category_icon">
+                    <img
+                      src={`http://localhost:5000/${category.icon}`}
+                      height="50"
+                      width="50"
+                      alt={category.name}
+                    />
+                  </div>
+                  <div className="category_title">
+                    <div className="category_name">{category.name}</div>
+                    <div className="category_quantity">
+                      {Math.ceil(Math.random() * 20)} <span>ads</span>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            ))}
+            {/* <Link href="" className="category_item">
               <a>
                 <div className="category_icon">
-                  <GoDeviceMobile />
+                  <MdMonitor />
                 </div>
                 <div className="category_title">
-                  <div className="category_name">Mobiles</div>
+                  <div className="category_name">Electronics</div>
                   <div className="category_quantity">
                     122 <span>ads</span>
                   </div>
                 </div>
               </a>
-            </Link>
-            <Link href="" className="category_item">
+            </Link> */}
+
+            {/* <Link href="" className="category_item">
               <a>
                 <div className="category_icon">
                   <MdMonitor />
@@ -124,9 +134,9 @@ const Category = () => {
                   </div>
                 </div>
               </a>
-            </Link>
+            </Link> 
 
-            {/* <Link href="" className="category_item">
+             <Link href="" className="category_item">
               <div className="category_icon">
                 <GiLargeDress />
               </div>
