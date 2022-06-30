@@ -69,7 +69,7 @@ const Sidebar = () => {
               </MenuItem>
 
               <MenuItem icon={<FontAwesomeIcon icon={faAd} />}>
-                <Link href="/admin/dashboard/new-post-ads">
+                <Link href="/admin/dashboard/post-ad">
                   <a> Post Ads</a>
                 </Link>
               </MenuItem>

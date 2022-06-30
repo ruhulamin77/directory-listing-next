@@ -1,15 +1,17 @@
+import React from "react";
+import { DashboardLayout, DashboardNav, PostAd } from "../../../components";
 import { withIronSessionSsr } from "iron-session/next";
 import { verify } from "jsonwebtoken";
-import React from "react";
-import { Layout, ProfileLayout, VerifyBadge } from "../../../components";
-
-export default function GetVerifiedBadgePage() {
+export default function AdminDashboardPage() {
   return (
-    <Layout title="Get Verified">
-      <ProfileLayout>
-        <VerifyBadge />
-      </ProfileLayout>
-    </Layout>
+    <>
+      <div>
+        <DashboardLayout>
+          <DashboardNav title={"Post Ad"} />
+          <PostAd />
+        </DashboardLayout>
+      </div>{" "}
+    </>
   );
 }
 
@@ -21,7 +23,7 @@ export const getServerSideProps = withIronSessionSsr(
     if (token) {
       user = verify(token, process.env.JWT_SECRET);
 
-      if (user?.role !== "user") {
+      if (user?.role !== "admin") {
         return {
           redirect: {
             destination: "/user/login",
