@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 import {
   BsEnvelope,
   BsList,
@@ -6,10 +6,10 @@ import {
   BsPhone,
   BsSearch,
   BsTelephone,
-} from "react-icons/bs";
-import BottomNav from "./BottomNav";
-import MenuOffcanvas from "./MenuOffcanvas";
-import ProfileOffcanvas from "./ProfileOffcanvas";
+} from 'react-icons/bs';
+import BottomNav from './BottomNav';
+import MenuOffcanvas from './MenuOffcanvas';
+import ProfileOffcanvas from './ProfileOffcanvas';
 
 const Header = () => {
   return (
@@ -22,12 +22,12 @@ const Header = () => {
           <div className="navbar-nav d-flex flex-row w-100 gap-4">
             <a href="#" className="nav-link d-flex gap-2 align-items-center">
               <BsTelephone className="text-danger" />
-              <span className="text-dark">01701039997</span>
+              <span className="text-dark">+8801835539553</span>
             </a>
 
             <a href="#" className="nav-link d-flex gap-2 align-items-center">
               <BsEnvelope className="text-danger" />
-              <span className="text-dark">mntanveer9196@gmail.com</span>
+              <span className="text-dark">info.softfy@gmail.com</span>
             </a>
 
             <a
