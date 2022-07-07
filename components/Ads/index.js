@@ -1,17 +1,36 @@
-import React, { useEffect, useState } from 'react';
 import moment from 'moment';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getAllPosts } from '../../store/actions/postActions';
 import AdCard from './AdCard';
 import AdFilters from './AdFilters';
 import AdLoader from './AdLoader';
 import AdPagination from './AdPagination';
-import { getAllPosts } from '../../store/actions/postActions';
 
 const Ads = () => {
   const dispatch = useDispatch();
   const { posts, loading } = useSelector((state) => state.posts);
-
   const [filteredPosts, setFilteredPosts] = useState([]);
+
+  const [allFilteredPosts, setAllFilteredPosts] = useState(
+    {}
+    // {
+    //   sortBy: '',
+    //   category: '',
+    //   price: [],
+    //   country: '',
+    //   state: '',
+    // },
+  );
+
+  console.log('setData', allFilteredPosts);
+
+  const setData = (key, value) => {
+    setAllFilteredPosts({
+      ...allFilteredPosts,
+      [key]: value,
+    });
+  };
 
   useEffect(() => {
     dispatch(getAllPosts());
@@ -32,6 +51,7 @@ const Ads = () => {
 
   const handleSort = (sortBy) => {
     const sortedPosts = [...filteredPosts];
+    console.log('Sortby', sortBy);
     if (sortBy === 'newest') {
       sortedPosts.sort((a, b) => {
         return moment(b.createdAt).diff(moment(a.createdAt));
@@ -54,6 +74,8 @@ const Ads = () => {
       (post) => post.price >= price[0] && post.price <= price[1]
     );
     setFilteredPosts(filteredPostsByPrice);
+
+    console.log(price);
   };
 
   return (
@@ -66,11 +88,12 @@ const Ads = () => {
           handleSearch={handleSearch}
           handleSort={handleSort}
           handlePrice={handlePrice}
+          setData={setData}
         >
           <div className="row mb-3 gy-3">
             {loading
               ? [...Array(10)].map((_, i) => <AdLoader key={i} />)
-              : posts.map((post, index) => (
+              : filteredPosts.map((post, index) => (
                   <AdCard post={post} key={post._id} />
                 ))}
           </div>

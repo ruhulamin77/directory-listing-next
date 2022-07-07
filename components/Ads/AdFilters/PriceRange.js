@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-const PriceRange = ({ handlePrice }) => {
+const PriceRange = ({ handlePrice, setData }) => {
   const [price, setPrice] = useState([1, 100000]);
 
   return (
@@ -18,6 +18,7 @@ const PriceRange = ({ handlePrice }) => {
         onChange={(price) => {
           setPrice(price);
           handlePrice(price);
+          setData(price);
         }}
       />
       <div className="mt-2 d-flex align-items-center justify-content-between">
