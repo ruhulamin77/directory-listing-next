@@ -74,10 +74,14 @@ const AdFilters = ({
               <PriceRange handlePrice={handlePrice} setData={setData} />
               {/* price range */}
               {/* category */}
-              <CategoryAside setCategory={setCategory} />
+              <CategoryAside setCategory={setCategory} setData={setData} />
               {/* end of category */}
               {/* location */}
-              <LocationAside location={location} setLocation={setLocation} />
+              <LocationAside
+                location={location}
+                setLocation={setLocation}
+                setData={setData}
+              />
               {/* end of location */}
             </div>
           </div>

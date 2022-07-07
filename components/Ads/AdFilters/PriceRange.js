@@ -15,10 +15,11 @@ const PriceRange = ({ handlePrice, setData }) => {
         defaultValue={[1, 100000]}
         step={1}
         value={price}
+        name="price"
         onChange={(price) => {
           setPrice(price);
           handlePrice(price);
-          setData(price);
+          setData('price', [price]);
         }}
       />
       <div className="mt-2 d-flex align-items-center justify-content-between">

@@ -74,8 +74,6 @@ const Ads = () => {
       (post) => post.price >= price[0] && post.price <= price[1]
     );
     setFilteredPosts(filteredPostsByPrice);
-
-    console.log(price);
   };
 
   return (
