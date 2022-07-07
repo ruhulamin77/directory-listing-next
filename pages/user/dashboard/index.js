@@ -1,9 +1,9 @@
-import React from "react";
-import { Layout, ProfileLayout, ProfileHome } from "../../../components";
-import { withIronSessionSsr } from "iron-session/next";
-import { verify } from "jsonwebtoken";
-import { getSession } from "next-auth/react";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { Layout, ProfileLayout, ProfileHome } from '../../../components';
+import { withIronSessionSsr } from 'iron-session/next';
+import { verify } from 'jsonwebtoken';
+import { getSession } from 'next-auth/react';
+import { useSelector } from 'react-redux';
 
 export default function UserDashboard() {
   const { user } = useSelector((state) => state.loadedUser);
@@ -22,10 +22,10 @@ export const getServerSideProps = withIronSessionSsr(
     const { token } = req.cookies;
 
     var user = jwt.decode(token);
-    if (user.role !== "user") {
+    if (user.role !== 'user') {
       return {
         redirect: {
-          destination: "/user/login",
+          destination: '/user/login',
           permanent: false,
         },
       };
@@ -38,11 +38,11 @@ export const getServerSideProps = withIronSessionSsr(
     };
   },
   {
-    cookieName: "myapp_cookiename",
-    password: "complex_password_at_least_32_characters_long",
+    cookieName: 'myapp_cookiename',
+    password: 'complex_password_at_least_32_characters_long',
     // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
     cookieOptions: {
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV === 'production',
     },
   }
 );

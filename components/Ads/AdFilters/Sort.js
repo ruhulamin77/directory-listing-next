@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { BiSortAlt2 } from 'react-icons/bi';
 
-const Sort = ({ handleSort }) => {
+const Sort = ({ handleSort, setData }) => {
   const [sortBy, setSortBy] = useState('newest');
-  
+
   return (
     <div className="form-floating mb-3">
       <select
@@ -12,9 +12,11 @@ const Sort = ({ handleSort }) => {
         style={{ cursor: 'pointer' }}
         id="sortSelect"
         value={sortBy}
+        name="sortBy"
         onChange={(e) => {
           setSortBy(e.target.value);
           handleSort(e.target.value);
+          setData(e.target.name, e.target.value);
         }}
       >
         <option value="newest">Date: Newest to Oldest</option>

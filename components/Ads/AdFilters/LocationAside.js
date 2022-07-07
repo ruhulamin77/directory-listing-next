@@ -61,7 +61,8 @@ const CountryAside = ({ locations, setLocation }) => {
                     key={index}
                     className="ps-4 btn list-group-item-action d-inline-flex align-items-center rounded gap-2 shadow-none"
                     type="button"
-                    onClick={() => setLocation({ country: country.name })}
+                    // onClick={() => setLocation({ country: country.name })}
+                    onClick={() => setData({ country: country.name })}
                   >
                     {country.name}
                   </button>
@@ -139,7 +140,8 @@ const StateAside = ({ locations, setLocation }) => {
                   key={index}
                   className="ps-4 btn list-group-item-action d-inline-flex align-items-center rounded gap-1 shadow-none"
                   type="button"
-                  onClick={() => setLocation({ state: state.name })}
+                  // onClick={() => setLocation({ state: state.name })}
+                  onClick={() => setData({ state: state.name })}
                 >
                   {state.name}
                   <span className="text-muted" style={{ fontSize: '10px' }}>
