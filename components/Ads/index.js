@@ -33,8 +33,8 @@ const Ads = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllPosts());
-  }, [dispatch]);
+    dispatch(getAllPosts(allFilteredPosts));
+  }, [dispatch, allFilteredPosts]);
 
   useEffect(() => {
     if (posts.length > 0) {
@@ -46,12 +46,11 @@ const Ads = () => {
     const filteredPosts = posts.filter((post) =>
       post.title.toLowerCase().includes(queryStr.toLowerCase())
     );
-    setFilteredPosts(filteredPosts);
+    // setFilteredPosts(filteredPosts);
   };
 
   const handleSort = (sortBy) => {
     const sortedPosts = [...filteredPosts];
-    console.log('Sortby', sortBy);
     if (sortBy === 'newest') {
       sortedPosts.sort((a, b) => {
         return moment(b.createdAt).diff(moment(a.createdAt));
@@ -65,7 +64,7 @@ const Ads = () => {
     } else if (sortBy === 'highest') {
       sortedPosts.sort((a, b) => b.price - a.price);
     }
-    setFilteredPosts(sortedPosts);
+    // setFilteredPosts(sortedPosts);
   };
 
   const handlePrice = (price) => {
@@ -73,7 +72,7 @@ const Ads = () => {
     const filteredPostsByPrice = filteredPosts.filter(
       (post) => post.price >= price[0] && post.price <= price[1]
     );
-    setFilteredPosts(filteredPostsByPrice);
+    // setFilteredPosts(filteredPostsByPrice);
   };
 
   return (
@@ -91,7 +90,7 @@ const Ads = () => {
           <div className="row mb-3 gy-3">
             {loading
               ? [...Array(10)].map((_, i) => <AdLoader key={i} />)
-              : filteredPosts.map((post, index) => (
+              : posts.map((post, index) => (
                   <AdCard post={post} key={post._id} />
                 ))}
           </div>
