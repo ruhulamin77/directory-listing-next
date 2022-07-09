@@ -11,15 +11,15 @@ const PriceRange = ({ handlePrice, setData }) => {
       <Slider
         range
         min={1}
-        max={1000}
-        defaultValue={[1, 100000]}
+        max={10000}
+        defaultValue={[1, 10000]}
         step={1}
         value={price}
         name="price"
         onChange={(price) => {
           setPrice(price);
           handlePrice(price);
-          setData('price', [price]);
+          setData('price', price);
         }}
       />
       <div className="mt-2 d-flex align-items-center justify-content-between">
