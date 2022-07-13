@@ -138,7 +138,7 @@ const StateAside = ({ locations, setLocation, setData }) => {
                 type="button"
                 name="state"
                 // onClick={() => setLocation({ state: 'all' })}
-                onClick={(e) => setData(e.target.name, 'all')}
+                onClick={(e) => setData("state", 'all')}
               >
                 All States
               </button>
@@ -149,7 +149,7 @@ const StateAside = ({ locations, setLocation, setData }) => {
                   type="button"
                   name="state"
                   // onClick={() => setLocation({ state: state.name })}
-                  onClick={(e) => setData(e.target.name, state.name)}
+                  onClick={(e) => setData("state", state.name)}
                 >
                   {state.name}
                   <span className="text-muted" style={{ fontSize: '10px' }}>

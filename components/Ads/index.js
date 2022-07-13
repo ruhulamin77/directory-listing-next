@@ -36,6 +36,7 @@ const Ads = () => {
     dispatch(getAllPosts(allFilteredPosts));
   }, [dispatch, allFilteredPosts]);
 
+  
   useEffect(() => {
     if (posts.length > 0) {
       setFilteredPosts(posts);
