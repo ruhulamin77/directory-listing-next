@@ -106,6 +106,10 @@ const PostAd = () => {
     }
   };
 
+
+  const {posts}= useSelector(state=> state.posts)
+
+console.log("posts", posts)
   return (
     <section className="my-md-3 bg-light">
       <div

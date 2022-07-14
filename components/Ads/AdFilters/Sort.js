@@ -19,8 +19,8 @@ const Sort = ({ handleSort, setData }) => {
           setData(e.target.name, e.target.value);
         }}
       >
-        <option value="newest">Date: Newest to Oldest</option>
-        <option value="oldest">Date: Oldest to Newest</option>
+        {/* <option value="newest">Date: Newest to Oldest</option>
+        <option value="oldest">Date: Oldest to Newest</option> */}
         <option value="lowest">Price: Low to High</option>
         <option value="highest">Price: High to Low</option>
       </select>

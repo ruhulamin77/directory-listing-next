@@ -11,7 +11,8 @@ const Ads = () => {
   const dispatch = useDispatch();
   const { posts, loading } = useSelector((state) => state.posts);
   const [filteredPosts, setFilteredPosts] = useState([]);
-
+  
+  console.log("posts", posts)
   const [allFilteredPosts, setAllFilteredPosts] = useState(
     {}
     // {
