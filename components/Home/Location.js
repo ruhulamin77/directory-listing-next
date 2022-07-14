@@ -13,6 +13,7 @@ const Location = () => {
   const dispatch = useDispatch()
 const handleFilter =(state)=>{
   const filter={ state }
+  console.log("State", filter)
 
   dispatch(getAllPosts(filter))
   }
@@ -28,7 +29,7 @@ const handleFilter =(state)=>{
               <div className="states_container">
                 {loc.state.map((st, i) => (
                   <div key={i} className="state_column">
-                     <Link href="">                            
+                     <Link href="/all-ads">                            
                     <a className="state_name" onClick={()=>handleFilter(st.name)} >{st?.name}</a>
                           </Link>
                     <ul>
@@ -51,5 +52,4 @@ const handleFilter =(state)=>{
     </div>
   );
 };
-
 export default Location;

@@ -26,7 +26,8 @@ import {
 export const getAllPosts = (allFilteredPosts) => async (dispatch) => {
   const allFilteredPostsStringified = await JSON.stringify(allFilteredPosts);
   dispatch({ type: ALL_POSTS_REQUEST });
-  let url = `http://localhost:5000/api/posts?filteredPosts=${allFilteredPostsStringified}`;
+  let url = `http://localhost:5000/api/posts?filteredPosts=${allFilteredPostsStringified}
+  `;
   try {
     const { data } = await axios.get(url);
     dispatch({ type: ALL_POSTS_SUCCESS, payload: data });
