@@ -13,8 +13,6 @@ const Location = () => {
   const dispatch = useDispatch()
 const handleFilter =(state)=>{
   const filter={ state }
-  console.log("State", filter)
-
   dispatch(getAllPosts(filter))
   }
 

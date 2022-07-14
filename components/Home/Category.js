@@ -25,7 +25,7 @@ const Category = () => {
                         src={`http://localhost:5000/${category.icon}`}
                         height="40"
                         width="40"
-                        alt={category.name}
+                        // alt={category.name}
                       />
                     </div>
                     <div className="category_title me-3">
