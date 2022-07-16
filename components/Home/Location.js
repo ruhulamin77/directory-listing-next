@@ -5,17 +5,15 @@ import { useSelector } from 'react-redux';
 import { getAllPosts } from '../../store/actions/postActions';
 // import './Location.css';
 
-
 const Location = () => {
   const { locations } = useSelector((state) => state.locations);
   console.log('locations:' + locations);
 
-  const dispatch = useDispatch()
-const handleFilter =(state)=>{
-  const filter={ state }
-  dispatch(getAllPosts(filter))
-  }
-
+  const dispatch = useDispatch();
+  const handleFilter = (state) => {
+    const filter = { state };
+    dispatch(getAllPosts(filter));
+  };
 
   return (
     <div className="main_container">
@@ -27,9 +25,14 @@ const handleFilter =(state)=>{
               <div className="states_container">
                 {loc.state.map((st, i) => (
                   <div key={i} className="state_column">
-                     <Link href="/all-ads">                            
-                    <a className="state_name" onClick={()=>handleFilter(st.name)} >{st?.name}</a>
-                          </Link>
+                    <Link href="/all-ads">
+                      <a
+                        className="state_name"
+                        onClick={() => handleFilter(st.name)}
+                      >
+                        {st?.name}
+                      </a>
+                    </Link>
                     <ul>
                       {st.city.map((ct, i) => (
                         <li key={i}>
