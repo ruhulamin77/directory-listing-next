@@ -1,5 +1,6 @@
-import axios from "axios";
-import Cookies from "js-cookie";
+
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import {
   ALL_POSTS_REQUEST,
   ALL_POSTS_SUCCESS,
@@ -20,17 +21,31 @@ import {
   POST_UPDATE_RESET,
   POST_UPDATE_FAIL,
   CLEAR_ERRORS,
-} from "../constants/postConstants";
+  FILTERS_SUCCESS,
+  FILTERS_FAIL,
+} from '../constants/postConstants';
 
 // Get all posts
-export const getAllPosts = () => async (dispatch) => {
+export const getAllPosts = (allFilteredPosts) => async (dispatch) => {
+  const allFilteredPostsStringified = await JSON.stringify(allFilteredPosts);
   dispatch({ type: ALL_POSTS_REQUEST });
-  let url = `http://localhost:5000/api/posts`;
+  console.log("allfilterposts",allFilteredPosts)
+  let url = `http://localhost:5000/api/posts?filteredPosts=${allFilteredPostsStringified}`;
   try {
     const { data } = await axios.get(url);
-    dispatch({ type: ALL_POSTS_SUCCESS, payload: data });
+    dispatch({ type: ALL_POSTS_SUCCESS, payload: data});
   } catch (error) {
     dispatch({ type: ALL_POSTS_FAIL, payload: error.response.data.message });
+  }
+};
+// Filters 
+export const allFilter = (allFilters) => async (dispatch) => {
+  const allFiltersStringified = await JSON.stringify(allFilters);
+  console.log("alfilters",allFilters)
+  try {    
+    dispatch({ type: FILTERS_SUCCESS, payload: allFilters});
+  } catch (error) {
+    dispatch({ type: FILTERS_FAIL, payload: error.response.data.message });
   }
 };
 
@@ -39,18 +54,18 @@ export const createPost = (post) => async (dispatch) => {
   try {
     dispatch({ type: NEW_POST_REQUEST });
 
-    const token = Cookies.get("token");
+    const token = Cookies.get('token');
     // console.log(token, "token");
 
     const config = {
       headers: {
-        "Content-Type": "multipart/form-data",
+        'Content-Type': 'multipart/form-data',
         Authorization: token,
       },
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/posts",
+      'http://localhost:5000/api/posts',
       post,
       config
     );

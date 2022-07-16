@@ -7,8 +7,13 @@ import { BsFillFileEarmarkPostFill } from "react-icons/bs";
 import { ImStatsBars, ImStatsDots } from "react-icons/im";
 import { FiClock } from "react-icons/fi";
 import DashboardNav from "../DashboardNav";
+import { useSelector } from "react-redux";
 
 const DashboardHome = () => {
+  
+  const { posts } = useSelector((state) => state.posts);
+  console.log("posts", posts)
+  
   return (
     <div>
       <DashboardNav title="Dashboard"></DashboardNav>

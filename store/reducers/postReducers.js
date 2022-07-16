@@ -37,6 +37,13 @@ export const postsReducer = (state = { posts: [] }, action) => {
         posts: action.payload.posts,
         postsCount: action.payload.count,
       };
+    case FILTERS_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          error: null,        
+          allFilters: action.payload
+        };
     case ALL_POSTS_FAIL:
       return {
         ...state,
