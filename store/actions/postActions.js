@@ -20,18 +20,31 @@ import {
   POST_UPDATE_RESET,
   POST_UPDATE_FAIL,
   CLEAR_ERRORS,
+  FILTERS_SUCCESS,
+  FILTERS_FAIL,
 } from '../constants/postConstants';
 
 // Get all posts
 export const getAllPosts = (allFilteredPosts) => async (dispatch) => {
   const allFilteredPostsStringified = await JSON.stringify(allFilteredPosts);
   dispatch({ type: ALL_POSTS_REQUEST });
+  console.log("allfilterposts",allFilteredPosts)
   let url = `http://localhost:5000/api/posts?filteredPosts=${allFilteredPostsStringified}`;
   try {
     const { data } = await axios.get(url);
-    dispatch({ type: ALL_POSTS_SUCCESS, payload: data });
+    dispatch({ type: ALL_POSTS_SUCCESS, payload: data});
   } catch (error) {
     dispatch({ type: ALL_POSTS_FAIL, payload: error.response.data.message });
+  }
+};
+// Filters 
+export const allFilter = (allFilters) => async (dispatch) => {
+  const allFiltersStringified = await JSON.stringify(allFilters);
+  console.log("alfilters",allFilters)
+  try {    
+    dispatch({ type: FILTERS_SUCCESS, payload: allFilters});
+  } catch (error) {
+    dispatch({ type: FILTERS_FAIL, payload: error.response.data.message });
   }
 };
 

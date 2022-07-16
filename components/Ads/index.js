@@ -9,12 +9,12 @@ import AdPagination from './AdPagination';
 
 const Ads = () => {
   const dispatch = useDispatch();
-  const { posts, loading } = useSelector((state) => state.posts);
+  const {filters, posts, loading } = useSelector((state) => state.posts);
   const [filteredPosts, setFilteredPosts] = useState([]);
   
-  console.log("posts", posts)
+  console.log("posts", posts,filters)
   const [allFilteredPosts, setAllFilteredPosts] = useState(
-    {}
+    null
     // {
     //   sortBy: '',
     //   category: '',
@@ -26,6 +26,7 @@ const Ads = () => {
 
   console.log('setData', allFilteredPosts);
 
+
   const setData = (key, value) => {
     setAllFilteredPosts({
       ...allFilteredPosts,
@@ -34,7 +35,9 @@ const Ads = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllPosts(allFilteredPosts));
+    if(allFilteredPosts){
+      dispatch(getAllPosts(allFilteredPosts));
+    }
   }, [dispatch, allFilteredPosts]);
 
   

@@ -5,6 +5,7 @@ import React from "react";
 import { BsCalendar4 } from "react-icons/bs";
 
 const AdCard = ({ post }) => {
+  console.log("post",post)
   return (
     <Link href={`/all-ads/${post._id}`}>
       <a className="nav-link py-0">

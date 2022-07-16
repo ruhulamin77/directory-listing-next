@@ -18,6 +18,7 @@ export default function AdminDashboardPage() {
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {
     const { token } = req.cookies;
+    console.log('my token',token);
     let user;
     // const user = req.session.user;
     if (token) {

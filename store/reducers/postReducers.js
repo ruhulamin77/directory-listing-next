@@ -18,6 +18,7 @@ import {
   POST_UPDATE_RESET,
   POST_UPDATE_FAIL,
   CLEAR_ERRORS,
+  FILTERS_SUCCESS,
 } from '../constants/postConstants';
 
 export const postsReducer = (state = { posts: [] }, action) => {
@@ -34,8 +35,16 @@ export const postsReducer = (state = { posts: [] }, action) => {
         ...state,
         loading: false,
         error: null,
-        posts: action.payload.posts,
+        posts:action.payload.posts, 
         postsCount: action.payload.count,
+        
+      };
+    case FILTERS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,        
+        allFilters: action.payload
       };
     case ALL_POSTS_FAIL:
       return {
