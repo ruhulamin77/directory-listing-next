@@ -54,5 +54,4 @@ console.log("posts", posts, allFilters)
     </div>
   );
 };
-
 export default Location;

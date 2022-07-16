@@ -13,7 +13,7 @@ import {
   Description,
   Images,
   Locations,
-  Model,
+  Model, 
   Price,
   PriceType,
   Title,
