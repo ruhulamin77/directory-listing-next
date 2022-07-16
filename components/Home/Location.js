@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getAllPosts } from '../../store/actions/postActions';
+import { allFilter, getAllPosts } from '../../store/actions/postActions';
 // import './Location.css';
 
 const Location = () => {
@@ -12,9 +12,14 @@ const Location = () => {
   const dispatch = useDispatch();
   const handleFilter = (state) => {
     const filter = { state };
+
+    dispatch(allFilter(filter));
     dispatch(getAllPosts(filter));
   };
 
+  const { posts, allFilters } = useSelector((state) => state.posts);
+
+  console.log('posts', posts, allFilters);
   return (
     <div className="main_container">
       <div className="location_container ">

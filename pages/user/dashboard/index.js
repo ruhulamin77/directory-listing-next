@@ -21,7 +21,7 @@ export const getServerSideProps = withIronSessionSsr(
     // const user = req.session.user;
     const { token } = req.cookies;
 
-    var user = jwt.decode(token);
+    var user = verify(token, process.env.JWT_SECRET);
     if (user.role !== 'user') {
       return {
         redirect: {
