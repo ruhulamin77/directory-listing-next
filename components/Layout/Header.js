@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import {
   BsEnvelope,
   BsList,
@@ -10,8 +12,16 @@ import {
 import BottomNav from './BottomNav';
 import MenuOffcanvas from './MenuOffcanvas';
 import ProfileOffcanvas from './ProfileOffcanvas';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllSettings } from '../../store/actions/settingActions';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const { settings } = useSelector((state) => state.settings);
+  useEffect(() => {
+    dispatch(getAllSettings());
+  }, []);
+
   return (
     <header>
       <ProfileOffcanvas />
@@ -48,7 +58,12 @@ const Header = () => {
             {/* <!-- nav logo --> */}
             <Link href="/">
               <a className="navbar-brand fs-3 fw-bolder me-0 text-dark d-none d-md-block">
-                Softfy
+                <img
+                  src={`http://localhost:5000/${settings.logo}`}
+                  height="50"
+                  width="50"
+                  // alt={category.name}
+                />
               </a>
             </Link>
             {/* <!-- hamburger menu --> */}

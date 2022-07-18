@@ -1,13 +1,14 @@
-import { combineReducers } from "redux";
-import { categoriesReducer } from "./categoryReducers";
-import { locationsReducer } from "./locationReducers";
+import { combineReducers } from 'redux';
+import { categoriesReducer } from './categoryReducers';
+import { locationsReducer } from './locationReducers';
 import {
   newPostReducer,
   postDetailsReducer,
   postReducer,
   postsReducer,
-} from "./postReducers";
-import { authReducer, loadedUserReducer, userReducer } from "./userReducers";
+} from './postReducers';
+import { settingsReducer } from './settingReducers';
+import { authReducer, loadedUserReducer, userReducer } from './userReducers';
 
 const reducers = combineReducers({
   categories: categoriesReducer,
@@ -19,6 +20,7 @@ const reducers = combineReducers({
   post: postReducer,
   postDetails: postDetailsReducer,
   newPost: newPostReducer,
+  settings: settingsReducer,
 });
 
 export default reducers;
