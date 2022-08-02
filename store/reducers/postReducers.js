@@ -18,9 +18,10 @@ import {
   POST_UPDATE_RESET,
   POST_UPDATE_FAIL,
   CLEAR_ERRORS,
+  FILTERS_SUCCESS,
 } from '../constants/postConstants';
 
-export const postsReducer = (state = { posts: [] }, action) => {
+export const postsReducer = (state = { posts: [],todayPosts:[] }, action) => {
   switch (action.type) {
     case ALL_POSTS_REQUEST:
       return {
@@ -28,6 +29,7 @@ export const postsReducer = (state = { posts: [] }, action) => {
         loading: true,
         error: null,
         posts: [],
+        todayPosts: [],
       };
     case ALL_POSTS_SUCCESS:
       return {
@@ -36,6 +38,7 @@ export const postsReducer = (state = { posts: [] }, action) => {
         error: null,
         posts: action.payload.posts,
         postsCount: action.payload.count,
+        todayPosts: action.payload.todayPosts
       };
     case FILTERS_SUCCESS:
         return {
@@ -50,6 +53,7 @@ export const postsReducer = (state = { posts: [] }, action) => {
         loading: false,
         error: action.payload,
         posts: [],
+        todayPosts: [],
       };
     case CLEAR_ERRORS:
       return {

@@ -1,22 +1,46 @@
-import React, { useEffect, useState } from 'react';
 import moment from 'moment';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getAllPosts } from '../../store/actions/postActions';
 import AdCard from './AdCard';
 import AdFilters from './AdFilters';
 import AdLoader from './AdLoader';
 import AdPagination from './AdPagination';
-import { getAllPosts } from '../../store/actions/postActions';
 
 const Ads = () => {
   const dispatch = useDispatch();
-  const { posts, loading } = useSelector((state) => state.posts);
-
+  const {filters, posts, loading } = useSelector((state) => state.posts);
   const [filteredPosts, setFilteredPosts] = useState([]);
+  
+  console.log("posts", posts,filters)
+  const [allFilteredPosts, setAllFilteredPosts] = useState(
+    null
+    // {
+    //   sortBy: '',
+    //   category: '',
+    //   price: [],
+    //   country: '',
+    //   state: '',
+    // },
+  );
+
+  console.log('setData', allFilteredPosts);
+
+
+  const setData = (key, value) => {
+    setAllFilteredPosts({
+      ...allFilteredPosts,
+      [key]: value,
+    });
+  };
 
   useEffect(() => {
-    dispatch(getAllPosts());
-  }, [dispatch]);
+    if(allFilteredPosts){
+      dispatch(getAllPosts(allFilteredPosts));
+    }
+  }, [dispatch, allFilteredPosts]);
 
+  
   useEffect(() => {
     if (posts.length > 0) {
       setFilteredPosts(posts);
@@ -27,7 +51,7 @@ const Ads = () => {
     const filteredPosts = posts.filter((post) =>
       post.title.toLowerCase().includes(queryStr.toLowerCase())
     );
-    setFilteredPosts(filteredPosts);
+    // setFilteredPosts(filteredPosts);
   };
 
   const handleSort = (sortBy) => {
@@ -45,7 +69,7 @@ const Ads = () => {
     } else if (sortBy === 'highest') {
       sortedPosts.sort((a, b) => b.price - a.price);
     }
-    setFilteredPosts(sortedPosts);
+    // setFilteredPosts(sortedPosts);
   };
 
   const handlePrice = (price) => {
@@ -53,7 +77,7 @@ const Ads = () => {
     const filteredPostsByPrice = filteredPosts.filter(
       (post) => post.price >= price[0] && post.price <= price[1]
     );
-    setFilteredPosts(filteredPostsByPrice);
+    // setFilteredPosts(filteredPostsByPrice);
   };
 
   return (
@@ -66,6 +90,7 @@ const Ads = () => {
           handleSearch={handleSearch}
           handleSort={handleSort}
           handlePrice={handlePrice}
+          setData={setData}
         >
           <div className="row mb-3 gy-3">
             {loading

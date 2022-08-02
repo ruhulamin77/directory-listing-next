@@ -3,7 +3,7 @@ import { BsChevronDown } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLocations } from '../../../store/actions/locationActions';
 
-const LocationAside = ({ setLocation, location }) => {
+const LocationAside = ({ setLocation, location, setData }) => {
   const dispatch = useDispatch();
   const { locations } = useSelector((state) => state.locations);
 
@@ -17,17 +17,19 @@ const LocationAside = ({ setLocation, location }) => {
         locations={locations}
         location={location}
         setLocation={setLocation}
+        setData={setData}
       />
       <StateAside
         locations={locations}
         location={location}
         setLocation={setLocation}
+        setData={setData}
       />
     </>
   );
 };
 
-const CountryAside = ({ locations, setLocation }) => {
+const CountryAside = ({ locations, setLocation, setData }) => {
   return (
     <ul className="list-unstyled row">
       <li>
@@ -48,7 +50,9 @@ const CountryAside = ({ locations, setLocation }) => {
               <button
                 className="ps-4 btn list-group-item-action d-inline-flex align-items-center rounded gap-2 shadow-none"
                 type="button"
-                onClick={() => setLocation({ country: 'all' })}
+                name="country"
+                // onClick={() => setLocation({ country: 'all' })}
+                onClick={(e) => setData(e.target.name, 'all')}
               >
                 All Countries
               </button>
@@ -59,9 +63,11 @@ const CountryAside = ({ locations, setLocation }) => {
                 .map((country, index) => (
                   <button
                     key={index}
+                    name="country"
                     className="ps-4 btn list-group-item-action d-inline-flex align-items-center rounded gap-2 shadow-none"
                     type="button"
-                    onClick={() => setLocation({ country: country.name })}
+                    // onClick={() => setLocation({ country: country.name })}
+                    onClick={(e) => setData(e.target.name, country.name)}
                   >
                     {country.name}
                   </button>
@@ -74,7 +80,7 @@ const CountryAside = ({ locations, setLocation }) => {
   );
 };
 
-const StateAside = ({ locations, setLocation }) => {
+const StateAside = ({ locations, setLocation, setData }) => {
   const [states, setStates] = useState([]);
   const [searchedStates, setSearchedStates] = useState([]);
 
@@ -130,7 +136,9 @@ const StateAside = ({ locations, setLocation }) => {
               <button
                 className="ps-4 btn list-group-item-action d-inline-flex align-items-center rounded gap-2 shadow-none"
                 type="button"
-                onClick={() => setLocation({ state: 'all' })}
+                name="state"
+                // onClick={() => setLocation({ state: 'all' })}
+                onClick={(e) => setData("state", 'all')}
               >
                 All States
               </button>
@@ -139,7 +147,9 @@ const StateAside = ({ locations, setLocation }) => {
                   key={index}
                   className="ps-4 btn list-group-item-action d-inline-flex align-items-center rounded gap-1 shadow-none"
                   type="button"
-                  onClick={() => setLocation({ state: state.name })}
+                  name="state"
+                  // onClick={() => setLocation({ state: state.name })}
+                  onClick={(e) => setData("state", state.name)}
                 >
                   {state.name}
                   <span className="text-muted" style={{ fontSize: '10px' }}>

@@ -17,8 +17,9 @@ const Location = () => {
               <div className="states_container">
                 {loc.state.map((st, i) => (
                   <div key={i} className="state_column">
-                    
+                    <Link href="/all-ads">
                     <div className="state_name">{st?.name}</div>
+                    </Link>
                     <ul>
                       {st.city.map((ct, i) => (
                         <li key={i}>

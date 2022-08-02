@@ -7,7 +7,13 @@ import LocationAside from './LocationAside';
 import PriceRange from './PriceRange';
 import Sort from './Sort';
 
-const AdFilters = ({ children, handleSearch, handleSort, handlePrice }) => {
+const AdFilters = ({
+  children,
+  handleSearch,
+  handleSort,
+  handlePrice,
+  setData,
+}) => {
   const [searchedQuery, setSearchedQuery] = useState('');
 
   const [category, setCategory] = useState('all');
@@ -62,16 +68,20 @@ const AdFilters = ({ children, handleSearch, handleSort, handlePrice }) => {
           <div className="border rounded-3 p-2">
             <div className="px-0">
               {/* sort */}
-              <Sort handleSort={handleSort} />
+              <Sort handleSort={handleSort} setData={setData} />
               {/* end of sort */}
               {/* price range */}
-              <PriceRange handlePrice={handlePrice} />
+              <PriceRange handlePrice={handlePrice} setData={setData} />
               {/* price range */}
               {/* category */}
-              <CategoryAside setCategory={setCategory} />
+              <CategoryAside setCategory={setCategory} setData={setData} />
               {/* end of category */}
               {/* location */}
-              <LocationAside location={location} setLocation={setLocation} />
+              <LocationAside
+                location={location}
+                setLocation={setLocation}
+                setData={setData}
+              />
               {/* end of location */}
             </div>
           </div>

@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Col, FormControl, Row, Table } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getAllUsers } from "../../../store/actions/userActions";
+
 const UsersWallet = () => {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+  useEffect(() => {
+    dispatch(getAllUsers())
+  }, [])
   return (
     <div className="p-2 bg-white m-2">
       <h6 className="my-2">All Wallet</h6>

@@ -1,5 +1,5 @@
 import React from "react";
-import { DashboardLayout, Profile } from "../../../components";
+import { DashboardLayout, Profile, ProfileSetting } from "../../../components";
 import { withIronSessionSsr } from "iron-session/next";
 import { verify } from "jsonwebtoken";
 
@@ -8,7 +8,7 @@ export default function AdminDashboardPage() {
     <>
       <div>
         <DashboardLayout>
-          <Profile />
+          <ProfileSetting />
         </DashboardLayout>
       </div>{" "}
     </>
@@ -18,6 +18,7 @@ export default function AdminDashboardPage() {
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {
     const { token } = req.cookies;
+    console.log("Token", token);
     let user;
     // const user = req.session.user;
     if (token) {

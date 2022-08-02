@@ -1,103 +1,206 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { updateProfile } from "../../store/actions/userActions";
+import DashboardNav from "../Dashboard/DashboardNav";
+import { toast } from "react-toastify";
+
 
 const ProfileSetting = () => {
-  return (
-    <div className="card my-4 container">
-      <h5 className="card-header">Profile Details</h5>
-      <div className="card-body">
-        <div className="d-flex align-items-start align-items-sm-center gap-4">
-          <img
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-            alt="user-avatar"
-            className="d-block rounded"
-            height="100"
-            width="100"
-            id="uploadedAvatar"
-          />
-          <div className="button-wrapper">
-            <label
-              htmlFor="upload"
-              className="btn btn-primary me-2 mb-4"
-              tabIndex="0"
-            >
-              <span className="d-none d-sm-block">Upload new photo</span>
-              <i className="bx bx-upload d-block d-sm-none"></i>
-              <input
-                type="file"
-                id="upload"
-                className="account-file-input"
-                hidden
-                accept="image/png, image/jpeg"
-              />
-            </label>
-            <button
-              type="button"
-              className="btn btn-outline-secondary account-image-reset mb-4"
-            >
-              <i className="bx bx-reset d-block d-sm-none"></i>
-              <span className="d-none d-sm-block">Logout</span>
-            </button>
+  const dispatch = useDispatch();
 
-            <p className="text-muted mb-0">
-              Allowed JPG, GIF or PNG. Max size of 800K
-            </p>
+  const { error, loading, user } = useSelector(
+    (state) => state.loadedUser
+  );
+  const [profileData, setProfileData] = useState({
+    // images: [],
+    name: "",
+    email: "",
+    password: "",
+    mobile: "",
+    address: "",
+    country: "",
+    state: "",
+    zipCode: "",
+    language: "",
+    currency: "",
+  });
+
+
+  console.log("user:", user);
+
+  const handleChange = (e) => {
+    console.log("form:", profileData)
+    setProfileData({
+      ...profileData,
+      [e.target.name]: e.target.value,
+    })
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", profileData.name);
+    formData.append("email", profileData.email);
+    formData.append("mobile", profileData.mobile);
+    formData.append("address", profileData.address);
+    formData.append("country", profileData.country);
+    formData.append("state", profileData.state);
+    formData.append("zipCode", profileData.zipCode);
+    formData.append("language", JSON.stringify(profileData.language));
+    formData.append("currency", JSON.stringify(profileData.currency));
+
+    // if (profileData.images.length > 0) {
+    //   profileData.images.forEach((image) => {
+    //     formData.append("image", image);
+    //   });
+    // }
+
+    dispatch(updateProfile(user?._id, formData));
+
+
+    // if (profileData.name === "") {
+    //   toast.error("Please enter title");
+    //   return;
+    // } else if (profileData.email === "") {
+    //   toast.error("Please enter description");
+    //   return;
+    // } else {
+
+    //   const formData = new FormData();
+    //   formData.append("name", profileData.name);
+    //   formData.append("email", profileData.email);
+    //   formData.append("mobile", profileData.mobile);
+    //   formData.append("address", profileData.address);
+    //   formData.append("country", profileData.country);
+    //   formData.append("state", profileData.state);
+    //   formData.append("zipCode", profileData.zipCode);
+    //   formData.append("language", JSON.stringify(profileData.language));
+    //   formData.append("currency", JSON.stringify(profileData.currency));
+    //   formData.append(
+    //     "contactDetails",
+    //     JSON.stringify(profileData.contactDetails)
+    //   );
+    //   if (profileData.image.length > 0) {
+    //     profileData.image.forEach((image) => {
+    //       formData.append("image", image);
+    //     });
+    //   }
+
+    // dispatch(createPost(formData));
+    formData.forEach((data) => {
+      // dispatch(loginUser(profileData));
+      console.log("data", data);
+    });
+    // }
+    console.log("form:", profileData)
+  };
+  console.log("form:", profileData)
+
+
+  return (
+    <>
+      <DashboardNav title="Profile Details" />
+      <form encType="multipart/form-data" onSubmit={handleSubmit} className="card my-4 container">
+        <h5 className="card-header">Profile Details</h5>
+        <div className="card-body">
+          <div className="d-flex align-items-start align-items-sm-center gap-4">
+            {/* <img
+              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+              alt="user-avatar"
+              className="d-block rounded"
+              height="100"
+              width="100"
+              id="uploadedAvatar"
+            /> */}
+            <div className="button-wrapper">
+              {/* <label
+                htmlFor="upload"
+                className="btn btn-primary me-2 mb-4"
+                tabIndex="0"
+              >
+                <span className="d-none d-sm-block">Upload new photo</span>
+                <i className="bx bx-upload d-block d-sm-none"></i>
+                <input
+                  type="file"
+                  id="upload"
+                  className="account-file-input"
+                  hidden
+                  accept="image/png, image/jpeg"
+                  name="image"
+                  onChange={(e) =>
+                    setProfileData({
+                      ...profileData,
+                      images: [...e.target.files].map((file) => file),
+                    })
+                  }
+                />
+              </label>
+              <button
+                type="button"
+                className="btn btn-outline-secondary account-image-reset mb-4"
+              >
+                <i className="bx bx-reset d-block d-sm-none"></i>
+                <span className="d-none d-sm-block">Logout</span>
+              </button>
+
+              <p className="text-muted mb-0">
+                Allowed JPG, GIF or PNG. Max size of 800K
+              </p> */}
+            </div>
           </div>
         </div>
-      </div>
-      <hr className="my-0" />
-      <div className="card-body">
-        <form id="formAccountSettings" method="POST" onSubmit="return false">
+        <hr className="my-0" />
+        <div className="card-body">
+          {/* <div id="formAccountSettings" method="POST" onSubmit="return false"> */}
           <div className="row">
             <div className="mb-3 col-md-6">
-              <label htmlFor="firstName" className="form-label">
-                First Name
-              </label>
+              <label htmlFor="name" className="form-label">
+                Full Name
+                <span className="text-danger">*</span> </label>
               <input
                 className="form-control"
                 type="text"
-                id="firstName"
-                name="firstName"
-                value="Mostofa"
+                id="name"
+                name="name"
+                required
+                onChange={handleChange}
+                defaultValue={user?.name}
                 autoFocus
+                placeholder="john doe"
               />
             </div>
-            <div className="mb-3 col-md-6">
-              <label htmlFor="lastName" className="form-label">
-                Last Name
-              </label>
-              <input
-                className="form-control"
-                type="text"
-                name="lastName"
-                id="lastName"
-                value="Nobi Tanveer"
-              />
-            </div>
+
             <div className="mb-3 col-md-6">
               <label htmlFor="email" className="form-label">
                 E-mail
-              </label>
+                <span className="text-danger">*</span> </label>
               <input
                 className="form-control"
-                type="text"
-                id="email"
                 name="email"
-                value="m.mostofanobi@gmail.com"
-                placeholder="john.doe@example.com"
+                required
+                defaultValue={user?.email}
+                type="email"
+                id="email"
+                onChange={handleChange} placeholder="john.doe@example.com"
               />
             </div>
+
             <div className="mb-3 col-md-6">
-              <label className="form-label" htmlFor="phoneNumber">
+              <label className="form-label" htmlFor="mobile">
                 Phone Number
               </label>
               <div className="input-group input-group-merge">
                 <span className="input-group-text">BD (+880)</span>
                 <input
                   type="text"
-                  id="phoneNumber"
-                  name="phoneNumber"
+
+                  defaultValue={user?.mobile}
+                  id="mobile"
+                  name="mobile"
                   className="form-control"
-                  placeholder="1XXXXXXXXX"
+                  onChange={handleChange} placeholder="1XXXXXXXXX"
                 />
               </div>
             </div>
@@ -110,39 +213,20 @@ const ProfileSetting = () => {
                 className="form-control"
                 id="address"
                 name="address"
-                placeholder="Address"
+
+
+                defaultValue={user?.address}
+                onChange={handleChange} placeholder="Address"
               />
             </div>
-            <div className="mb-3 col-md-6">
-              <label htmlFor="state" className="form-label">
-                State
-              </label>
-              <input
-                className="form-control"
-                type="text"
-                id="state"
-                name="state"
-                placeholder="Dhaka"
-              />
-            </div>
-            <div className="mb-3 col-md-6">
-              <label htmlFor="zipCode" className="form-label">
-                Zip Code
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="zipCode"
-                name="zipCode"
-                placeholder="1720"
-                maxLength="6"
-              />
-            </div>
+
             <div className="mb-3 col-md-6">
               <label className="form-label" htmlFor="country">
                 Country
               </label>
-              <select id="country" className="select2 form-select">
+              <select id="country"
+
+                defaultValue={user?.country} className="select2 form-select">
                 <option value="">Select</option>
                 <option value="Australia">Australia</option>
                 <option value="Bangladesh">Bangladesh</option>
@@ -172,11 +256,42 @@ const ProfileSetting = () => {
                 <option value="United States">United States</option>
               </select>
             </div>
+
+            <div className="mb-3 col-md-6">
+              <label htmlFor="state" className="form-label">
+                State
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                id="state"
+                defaultValue={user?.state}
+                name="state"
+                onChange={handleChange} placeholder="Dhaka"
+              />
+            </div>
+            <div className="mb-3 col-md-6">
+              <label htmlFor="zipCode" className="form-label">
+                Zip Code
+              </label>
+              <input
+                type="text"
+                className="form-control"
+
+                defaultValue={user?.zipCode}
+                id="zipCode"
+                name="zipCode"
+                onChange={handleChange} placeholder="1720"
+                maxLength="6"
+              />
+            </div>
+
             <div className="mb-3 col-md-6">
               <label htmlFor="language" className="form-label">
                 Language
               </label>
-              <select id="language" className="select2 form-select">
+              <select
+                defaultValue={user?.language} id="language" className="select2 form-select">
                 <option value="">Select Language</option>
                 <option value="en">English</option>
                 <option value="fr">French</option>
@@ -188,7 +303,8 @@ const ProfileSetting = () => {
               <label htmlFor="currency" className="form-label">
                 Currency
               </label>
-              <select id="currency" className="select2 form-select">
+              <select
+                defaultValue={user?.currency} id="currency" className="select2 form-select">
                 <option value="">Select Currency</option>
                 <option value="usd">USD</option>
                 <option value="euro">Euro</option>
@@ -205,9 +321,10 @@ const ProfileSetting = () => {
               Cancel
             </button>
           </div>
-        </form>
-      </div>
-    </div>
+        </div>
+        {/* </div> */}
+      </form>
+    </>
   );
 };
 

@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BsChevronDown } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategories } from '../../../store/actions/categoryActions';
 
-const CategoryAside = ({ setCategory }) => {
+const CategoryAside = ({ setCategory, setData }) => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
 
@@ -30,7 +30,9 @@ const CategoryAside = ({ setCategory }) => {
               <button
                 className="ps-4 btn list-group-item-action d-inline-flex align-items-center rounded gap-2 shadow-none"
                 type="button"
-                onClick={() => setCategory('all')}
+                name="category"
+                // onClick={() => setCategory('all')}
+                onClick={(e) => setData(e.target.name, 'all')}
               >
                 All Categories
               </button>
@@ -41,9 +43,11 @@ const CategoryAside = ({ setCategory }) => {
                 .map((category, index) => (
                   <button
                     key={index}
+                    name="category"
                     className="ps-4 btn list-group-item-action d-inline-flex align-items-center rounded gap-2 shadow-none"
                     type="button"
-                    onClick={() => setCategory(category.name)}
+                    // onClick={() => setCategory(category.name)}
+                    onClick={(e) => setData(e.target.name, category.name)}
                   >
                     {category.name}
                   </button>

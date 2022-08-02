@@ -52,7 +52,7 @@ const SearchAds = () => {
       </div>
       <div className="display_search">
       {loading
-              ? [...Array(10)].map((_, i) => <AdLoader key={i} />)
+              ? [...Array(10)].map((_, i) => <AdLoader className="m-5" key={i} />)
               : posts.map((post, index) => (
                  <div className="m-5">
                    <AdCard post={post} key={post._id} />
