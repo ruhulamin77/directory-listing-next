@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { getAllPosts } from "../../../store/actions/postActions";
@@ -17,7 +18,9 @@ const SearchAds = () => {
   
   useEffect(()=>{
     dispatch(getAllPosts({title: search}))
-  },[search, ])
+
+  },[search])
+
 
   const handleSearch=(value)=>{
     
@@ -51,7 +54,9 @@ const SearchAds = () => {
       </div>
       <div className="display_search">
       {loading
-              ? [...Array(10)].map((_, i) => <AdLoader key={i} />)
+
+              ? [...Array(10)].map((_, i) => <AdLoader className="m-5" key={i} />)
+
               : posts.map((post, index) => (
                  <div className="m-5">
                    <AdCard post={post} key={post._id} />

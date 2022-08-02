@@ -112,10 +112,13 @@ export const loadUser = (token) => async (dispatch) => {
 };
 
 // Update Profile
-export const updateProfile = (userData) => async (dispatch) => {
+export const updateProfile = (id, userData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PROFILE_REQUEST });
 
+    userData.forEach((data) => {
+      console.log("userData", data);
+    });
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -123,7 +126,7 @@ export const updateProfile = (userData) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      "/api/me/update-profile",
+      `http://localhost:5000/users/${id}`,
       userData,
       config
     );

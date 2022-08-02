@@ -31,12 +31,14 @@ const Location = () => {
                 {loc.state.map((st, i) => (
                   <div key={i} className="state_column">
                     <Link href="/all-ads">
+
                       <a
                         className="state_name"
                         onClick={() => handleFilter(st.name)}
                       >
                         {st?.name}
                       </a>
+
                     </Link>
                     <ul>
                       {st.city.map((ct, i) => (
