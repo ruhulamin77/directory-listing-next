@@ -36,8 +36,9 @@ export const postsReducer = (state = { posts: [],todayPosts:[] }, action) => {
         ...state,
         loading: false,
         error: null,
-        posts: action.payload.posts,
+        posts:action.payload.posts, 
         postsCount: action.payload.count,
+
         todayPosts: action.payload.todayPosts
       };
     case FILTERS_SUCCESS:
@@ -47,6 +48,7 @@ export const postsReducer = (state = { posts: [],todayPosts:[] }, action) => {
           error: null,        
           allFilters: action.payload
         };
+
     case ALL_POSTS_FAIL:
       return {
         ...state,

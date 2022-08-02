@@ -1,13 +1,13 @@
-import Link from "next/link";
-import { useEffect } from "react";
-import { Container } from "react-bootstrap";
-import { AiFillCar } from "react-icons/ai";
-import { FaDog } from "react-icons/fa";
-import { GiTShirt } from "react-icons/gi";
-import { GoDeviceMobile } from "react-icons/go";
-import { IoHome } from "react-icons/io5";
-import { MdMonitor, MdOutlineChair } from "react-icons/md";
-import { useSelector } from "react-redux";
+import Link from 'next/link';
+import { useEffect } from 'react';
+import { Container } from 'react-bootstrap';
+import { AiFillCar } from 'react-icons/ai';
+import { FaDog } from 'react-icons/fa';
+import { GiTShirt } from 'react-icons/gi';
+import { GoDeviceMobile } from 'react-icons/go';
+import { IoHome } from 'react-icons/io5';
+import { MdMonitor, MdOutlineChair } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 const Category = () => {
   const { categories } = useSelector((state) => state.categories);
   return (
@@ -19,18 +19,20 @@ const Category = () => {
             {categories.map((category, index) => (
               <Link key={index} href="" className="category_item">
                 <a>
-                  <div className="category_icon">
-                    <img
-                      src={`http://localhost:5000/${category.icon}`}
-                      height="50"
-                      width="50"
-                      alt={category.name}
-                    />
-                  </div>
-                  <div className="category_title">
-                    <div className="category_name">{category.name}</div>
-                    <div className="category_quantity">
-                      {Math.ceil(Math.random() * 20)} <span>ads</span>
+                  <div className="category_container d-flex">
+                    <div className="category_icon me-3">
+                      <img
+                        src={`http://localhost:5000/${category.icon}`}
+                        height="40"
+                        width="40"
+                        // alt={category.name}
+                      />
+                    </div>
+                    <div className="category_title me-3">
+                      <div className="category_name">{category.name}</div>
+                      <div className="category_quantity">
+                        {Math.ceil(Math.random() * 20)} <span>ads</span>
+                      </div>
                     </div>
                   </div>
                 </a>
