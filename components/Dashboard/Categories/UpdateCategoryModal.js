@@ -59,6 +59,21 @@ const UpdateCategoryModal = ({ updateList, category, index }) => {
                     Category
                   </label>
                   <input
+                  type="file"
+                  name="icon"
+                  className=" input-group mb-3 form-control"
+                  required
+                  id="name"
+                  accept="image/jpeg,image/png,image/jpg"
+                  multiple={false}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      icon: [...e.target.files].map((file) => file),
+                    })
+                  }
+                />
+                  <input
                     type="text"
                     placeholder="Category name"
                     value={name}

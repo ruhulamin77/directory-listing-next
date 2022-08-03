@@ -1,7 +1,7 @@
-import React from "react";
-import { withIronSessionSsr } from "iron-session/next";
-import { verify } from "jsonwebtoken";
-import { DashboardHome, DashboardLayout } from "../../../components";
+import React from 'react';
+import { withIronSessionSsr } from 'iron-session/next';
+import { verify } from 'jsonwebtoken';
+import { DashboardHome, DashboardLayout } from '../../../components';
 
 export default function AdminDashboardPage() {
   return (
@@ -10,7 +10,7 @@ export default function AdminDashboardPage() {
         <DashboardLayout>
           <DashboardHome />
         </DashboardLayout>
-      </div>{" "}
+      </div>{' '}
     </>
   );
 }
@@ -18,15 +18,16 @@ export default function AdminDashboardPage() {
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {
     const { token } = req.cookies;
+    console.log('my token',token);
     let user;
     // const user = req.session.user;
     if (token) {
       user = verify(token, process.env.JWT_SECRET);
-
-      if (user?.role !== "admin") {
+      console.log('my env', process.env.JWT_SECRET);
+      if (user?.role !== 'admin') {
         return {
           redirect: {
-            destination: "/user/login",
+            destination: '/user/login',
             permanent: false,
           },
         };
@@ -34,13 +35,13 @@ export const getServerSideProps = withIronSessionSsr(
     } else {
       return {
         redirect: {
-          destination: "/user/login",
+          destination: '/user/login',
           permanent: false,
         },
       };
     }
 
-    console.log("User: " + token, user);
+    console.log('User: ' + token, user);
 
     return {
       props: {
@@ -50,11 +51,11 @@ export const getServerSideProps = withIronSessionSsr(
     };
   },
   {
-    cookieName: "myapp_cookiename",
-    password: "complex_password_at_least_32_characters_long",
+    cookieName: 'myapp_cookiename',
+    password: 'complex_password_at_least_32_characters_long',
     // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
     cookieOptions: {
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV === 'production',
     },
   }
 );

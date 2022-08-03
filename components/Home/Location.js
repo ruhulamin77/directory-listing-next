@@ -1,12 +1,25 @@
 import Link from 'next/link';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { allFilter, getAllPosts } from '../../store/actions/postActions';
 // import './Location.css';
 
 const Location = () => {
   const { locations } = useSelector((state) => state.locations);
   console.log('locations:' + locations);
 
+  const dispatch = useDispatch();
+  const handleFilter = (state) => {
+    const filter = { state };
+
+    dispatch(allFilter(filter));
+    dispatch(getAllPosts(filter));
+  };
+
+  const { posts, allFilters } = useSelector((state) => state.posts);
+
+  console.log('posts', posts, allFilters);
   return (
     <div className="main_container">
       <div className="location_container ">
@@ -18,7 +31,14 @@ const Location = () => {
                 {loc.state.map((st, i) => (
                   <div key={i} className="state_column">
                     <Link href="/all-ads">
-                    <div className="state_name">{st?.name}</div>
+
+                      <a
+                        className="state_name"
+                        onClick={() => handleFilter(st.name)}
+                      >
+                        {st?.name}
+                      </a>
+
                     </Link>
                     <ul>
                       {st.city.map((ct, i) => (
@@ -40,5 +60,4 @@ const Location = () => {
     </div>
   );
 };
-
 export default Location;

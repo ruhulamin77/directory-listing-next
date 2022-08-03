@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { BsXCircleFill } from "react-icons/bs";
-import { useDispatch } from "react-redux";
-import { createNewCategory } from "../../../store/actions/categoryActions";
+import React, { useState } from 'react';
+import { BsXCircleFill } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { createNewCategory } from '../../../store/actions/categoryActions';
 
 const CategoryModal = ({ updateList }) => {
   const dispatch = useDispatch();
-  const [subCategoryName, setSubCategoryName] = useState("");
+  const [subCategoryName, setSubCategoryName] = useState('');
   const [formData, setFormData] = useState({
-    name: "",
+    name: '',
     subCategories: [],
     icon: [],
   });
   const { name, subCategories, icon } = formData;
-  console.log("formData", formData);
+  console.log('formData', formData);
 
   const handleAddCategory = (e) => {
     e.preventDefault();
@@ -21,22 +21,22 @@ const CategoryModal = ({ updateList }) => {
       ...formData,
       subCategories: [...subCategories, subCategoryName],
     });
-    setSubCategoryName("");
+    setSubCategoryName('');
 
     const data = new FormData();
-    data.append("name", formData.name);
-    data.append("subCategories", formData.subCategories);
+    data.append('name', formData.name);
+    data.append('subCategories', formData.subCategories);
     // data.append("icon", formData.icon[0]);
     if (formData.icon.length > 0) {
       formData.icon.forEach((icon) => {
-        data.append("icon", icon);
+        data.append('icon', icon);
       });
     }
 
     if (name) {
       dispatch(createNewCategory(data));
       setFormData({
-        name: "",
+        name: '',
         subCategories: [],
         icon: [],
       });
@@ -118,7 +118,7 @@ const CategoryModal = ({ updateList }) => {
                         subCategoryName,
                       ],
                     });
-                    setSubCategoryName("");
+                    setSubCategoryName('');
                   }}
                   disabled={!subCategoryName.trim()}
                 >

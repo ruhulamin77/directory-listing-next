@@ -108,6 +108,12 @@ a {
   color: gray;
 }
 
+.category_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 /* footer css  */
 .footer_container {
   max-width: 1170px;
