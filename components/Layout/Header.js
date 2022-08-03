@@ -32,7 +32,7 @@ const Header = () => {
           <div className="navbar-nav d-flex flex-row w-100 gap-4">
             <a href="#" className="nav-link d-flex gap-2 align-items-center">
               <BsTelephone className="text-danger" />
-              <span className="text-dark">+8801835539553</span>
+              <span className="text-dark">+88018888888888</span>
             </a>
 
             <a href="#" className="nav-link d-flex gap-2 align-items-center">
@@ -58,12 +58,13 @@ const Header = () => {
             {/* <!-- nav logo --> */}
             <Link href="/">
               <a className="navbar-brand fs-3 fw-bolder me-0 text-dark d-none d-md-block">
-                <img
+
+                SOFTFY {/* <img
                   src={`http://localhost:5000/${settings.logo}`}
                   height="50"
                   width="50"
                   // alt={category.name}
-                />
+                /> */}
               </a>
             </Link>
             {/* <!-- hamburger menu --> */}
