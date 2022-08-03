@@ -58,12 +58,13 @@ const Header = () => {
             {/* <!-- nav logo --> */}
             <Link href="/">
               <a className="navbar-brand fs-3 fw-bolder me-0 text-dark d-none d-md-block">
-                <img
+
+                SOFTFY {/* <img
                   src={`http://localhost:5000/${settings.logo}`}
                   height="50"
                   width="50"
                   // alt={category.name}
-                />
+                /> */}
               </a>
             </Link>
             {/* <!-- hamburger menu --> */}
